@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 
-namespace SciHub.Web.Models
+namespace SciHub.Web.ViewModels.Home
 {
     public class IndexViewModel
     {

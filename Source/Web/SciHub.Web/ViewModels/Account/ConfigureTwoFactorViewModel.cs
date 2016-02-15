@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SciHub.Web.Models
+namespace SciHub.Web.ViewModels.Account
 {
     public class ConfigureTwoFactorViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SciHub.Web.Models
+namespace SciHub.Web.ViewModels.Account
 {
     public class ExternalLoginConfirmationViewModel
     {

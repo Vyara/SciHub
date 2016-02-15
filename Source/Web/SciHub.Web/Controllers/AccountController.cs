@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Controllers
+﻿using SciHub.Web.ViewModels.Account;
+
+namespace SciHub.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -8,7 +10,6 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Data.Models;
-    using Models;
 
     [Authorize]
     public class AccountController : Controller

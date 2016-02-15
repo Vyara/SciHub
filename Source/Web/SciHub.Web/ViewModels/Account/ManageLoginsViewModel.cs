@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace SciHub.Web.Models
+namespace SciHub.Web.ViewModels.Account
 {
     public class ManageLoginsViewModel
     {

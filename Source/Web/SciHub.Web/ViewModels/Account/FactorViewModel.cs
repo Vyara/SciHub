@@ -1,4 +1,4 @@
-namespace SciHub.Web.Models
+namespace SciHub.Web.ViewModels.Account
 {
     public class FactorViewModel
     {

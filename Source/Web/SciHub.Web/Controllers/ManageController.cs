@@ -6,7 +6,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using SciHub.Web.Models;
+using SciHub.Web.ViewModels.Account;
+using SciHub.Web.ViewModels.Home;
 
 namespace SciHub.Web.Controllers
 {
