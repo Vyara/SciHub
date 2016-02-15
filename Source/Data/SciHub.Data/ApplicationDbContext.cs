@@ -1,7 +1,7 @@
 namespace SciHub.Data
 {
-    using Models;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
 
     public class ApplicationDbContext : IdentityDbContext<User>
     {

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace SciHub.Web.Models
 {
     public class ForgotPasswordViewModel

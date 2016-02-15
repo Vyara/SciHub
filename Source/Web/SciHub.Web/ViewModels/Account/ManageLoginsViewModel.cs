@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace SciHub.Web.Models
 {

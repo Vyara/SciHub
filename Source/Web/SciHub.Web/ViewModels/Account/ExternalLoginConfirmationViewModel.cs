@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SciHub.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

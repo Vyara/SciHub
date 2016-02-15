@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace SciHub.Web
 {
