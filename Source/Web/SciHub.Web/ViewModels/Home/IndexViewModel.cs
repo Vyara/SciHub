@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
-
-namespace SciHub.Web.ViewModels.Home
+﻿namespace SciHub.Web.ViewModels.Home
 {
+    using System.Collections.Generic;
+    using Microsoft.AspNet.Identity;
+
     public class IndexViewModel
     {
         public bool HasPassword { get; set; }
