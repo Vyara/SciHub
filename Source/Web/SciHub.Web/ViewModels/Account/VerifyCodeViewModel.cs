@@ -1,7 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace SciHub.Web.ViewModels.Account
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class VerifyCodeViewModel
     {
         [Required]
@@ -10,6 +10,7 @@ namespace SciHub.Web.ViewModels.Account
         [Required]
         [Display(Name = "Code")]
         public string Code { get; set; }
+
         public string ReturnUrl { get; set; }
 
         [Display(Name = "Remember this browser?")]

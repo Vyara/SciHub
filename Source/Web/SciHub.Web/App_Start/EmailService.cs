@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
-
-namespace SciHub.Web
+﻿namespace SciHub.Web
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNet.Identity;
+
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)

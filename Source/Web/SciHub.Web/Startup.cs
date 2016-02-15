@@ -1,14 +1,16 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using SciHub.Web;
 
-[assembly: OwinStartupAttribute(typeof(SciHub.Web.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
+
 namespace SciHub.Web
 {
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            this.ConfigureAuth(app);
         }
     }
 }

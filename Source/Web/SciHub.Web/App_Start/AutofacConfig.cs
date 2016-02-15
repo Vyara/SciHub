@@ -1,11 +1,9 @@
 ﻿namespace SciHub.Web
 {
-    using System.Data.Entity;
     using System.Reflection;
+    using System.Web.Mvc;
     using Autofac;
     using Autofac.Integration.Mvc;
-    using Data;
-    using System.Web.Mvc;
 
     public static class AutofacConfig
     {

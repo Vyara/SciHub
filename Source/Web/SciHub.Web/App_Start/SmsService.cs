@@ -1,8 +1,8 @@
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-
 namespace SciHub.Web
 {
+    using System.Threading.Tasks;
+    using Microsoft.AspNet.Identity;
+
     public class SmsService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
