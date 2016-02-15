@@ -1,4 +1,4 @@
-﻿namespace SciHub.Web.Models
+﻿namespace SciHub.Data.Models
 {
     using System.Security.Claims;
     using System.Threading.Tasks;
