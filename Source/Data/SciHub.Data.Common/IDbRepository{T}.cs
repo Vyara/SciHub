@@ -1,5 +1,4 @@
-﻿
-namespace SciHub.Data.Common
+﻿namespace SciHub.Data.Common
 {
     using System.Linq;
     using Models;
