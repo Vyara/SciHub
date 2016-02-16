@@ -67,6 +67,10 @@
     <Compile Include="Common\Tag.cs" />
     <Compile Include="Enumerators\Gender.cs" />
     <Compile Include="Movie\Movie.cs" />
+    <Compile Include="Movie\MovieComment.cs" />
+    <Compile Include="Movie\MoviePoster.cs" />
+    <Compile Include="Movie\MovieRating.cs" />
+    <Compile Include="Movie\MovieStudio.cs" />
     <Compile Include="ShortStory\ShortStory.cs" />
     <Compile Include="ShortStory\ShortStoryComment.cs" />
     <Compile Include="ShortStory\ShortStoryRating.cs" />
