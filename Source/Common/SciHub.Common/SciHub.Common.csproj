@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\DataModelConstants.cs" />
+    <Compile Include="Constants\Models\BookModelConstants.cs" />
+    <Compile Include="Constants\Models\ShortStoryModelConstants.cs" />
+    <Compile Include="Constants\Models\UserModelConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

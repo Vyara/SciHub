@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
-    using SciHub.Common.Constants;
+    using SciHub.Common.Constants.Models;
 
     public class ShortStory : BaseModel<int>
     {
@@ -20,12 +20,12 @@
 
 
         [Required]
-        [MinLength(DataModelConstants.ShortStoryTitleMinLength)]
-        [MaxLength(DataModelConstants.ShortStoryTitleMaxLength)]
+        [MinLength(ShortStoryModelConstants.TitleMinLength)]
+        [MaxLength(ShortStoryModelConstants.TitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
-        [MinLength(DataModelConstants.ShortStoryContentMinLength)]
+        [MinLength(ShortStoryModelConstants.ContentMinLength)]
         public string Content { get; set; }
 
         public string AuthorId { get; set; }

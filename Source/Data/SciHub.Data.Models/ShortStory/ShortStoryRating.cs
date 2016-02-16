@@ -2,13 +2,13 @@
 {
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
-    using SciHub.Common.Constants;
+    using SciHub.Common.Constants.Models;
 
 
     public class ShortStoryRating : BaseModel<int>
     {
         [Required]
-        [Range(DataModelConstants.ShortStoryRatingMinValue, DataModelConstants.ShortStoryRatingMaxValue)]
+        [Range(ShortStoryModelConstants.RatingMinValue, ShortStoryModelConstants.RatingMaxValue)]
         public float Value { get; set; }
 
         public int ShortStoryId { get; set; }

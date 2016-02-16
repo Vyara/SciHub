@@ -2,13 +2,13 @@
 {
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
-    using SciHub.Common.Constants;
+    using SciHub.Common.Constants.Models;
 
     public class ShortStoryComment : BaseModel<int>
     {
         [Required]
-        [MinLength(DataModelConstants.ShortStoryCommentMinLength)]
-        [MaxLength(DataModelConstants.ShortStoryCommentMaxLength)]
+        [MinLength(ShortStoryModelConstants.CommentMinLength)]
+        [MaxLength(ShortStoryModelConstants.CommentMaxLength)]
         public string Content { get; set; }
 
         public int ShortStoryId { get; set; }

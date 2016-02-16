@@ -9,17 +9,18 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using Enumerators;
     using SciHub.Common.Constants;
+    using SciHub.Common.Constants.Models;
 
     public class User : IdentityUser, IAuditInfo, IDeletableEntity 
     {
         [Required]
-        [MinLength(DataModelConstants.UserFirstNameMinLength)]
-        [MaxLength(DataModelConstants.UserFirstNameMaxLength)]
+        [MinLength(UserModelConstants.FirstNameMinLength)]
+        [MaxLength(UserModelConstants.FirstNameMaxLength)]
         public string FirstName { get; set; }
 
         [Required]
-        [MinLength(DataModelConstants.UserLastNameMinLength)]
-        [MaxLength(DataModelConstants.UserLastNameMaxLength)]
+        [MinLength(UserModelConstants.LastNameMinLength)]
+        [MaxLength(UserModelConstants.LastNameMaxLength)]
         public string LastName { get; set; }
 
         [RegularExpression(DataModelConstants.UrlValiadtion)]
@@ -30,7 +31,7 @@
         [Required]
         public Gender Gender { get; set; }
 
-        [MaxLength(DataModelConstants.UserAboutMaxLength)]
+        [MaxLength(UserModelConstants.AboutMaxLength)]
         public string About { get; set; }
 
         public DateTime CreatedOn { get; set; }

@@ -2,8 +2,9 @@ namespace SciHub.Web.ViewModels.Account
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Common.Constants;
     using Data.Models.Enumerators;
+    using Common.Constants;
+    using Common.Constants.Models;
 
     public class RegisterViewModel
     {
@@ -18,12 +19,12 @@ namespace SciHub.Web.ViewModels.Account
 
         [Required]
         [Display(Name = "First name")]
-        [StringLength(DataModelConstants.UserFirstNameMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = DataModelConstants.UserFirstNameMinLength)]
+        [StringLength(UserModelConstants.FirstNameMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = UserModelConstants.FirstNameMinLength)]
         public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Last name")]
-        [StringLength(DataModelConstants.UserLastNameMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = DataModelConstants.UserLastNameMinLength)]
+        [StringLength(UserModelConstants.LastNameMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = UserModelConstants.LastNameMinLength)]
         public string LastName { get; set; }
 
         [Required]
@@ -42,7 +43,7 @@ namespace SciHub.Web.ViewModels.Account
 
         [Required]
         [Display(Name = "About")]
-        [StringLength(DataModelConstants.UserAboutMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.")]
+        [StringLength(UserModelConstants.AboutMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.")]
         public string About { get; set; }
 
         [Required]

@@ -2,14 +2,13 @@
 {
     using System.ComponentModel.DataAnnotations;
     using Common.Models;
-    using SciHub.Common.Constants;
-
+    using SciHub.Common.Constants.Models;
 
     public class ShortStoryTag : BaseModel<int>
     {
         [Required]
-        [MinLength(DataModelConstants.ShortStoryTagMinLength)]
-        [MaxLength(DataModelConstants.ShortStoryTagMaxLength)]
-        public string Value { get; set; }
+        [MinLength(ShortStoryModelConstants.TagMinLength)]
+        [MaxLength(ShortStoryModelConstants.TagMaxLength)]
+        public string Name { get; set; }
     }
 }

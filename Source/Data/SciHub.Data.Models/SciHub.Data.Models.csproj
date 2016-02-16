@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Book\Book.cs" />
+    <Compile Include="Book\BookAuthor.cs" />
+    <Compile Include="Book\BookComment.cs" />
+    <Compile Include="Book\BookCover.cs" />
+    <Compile Include="Book\BookRating.cs" />
+    <Compile Include="Book\BookTag.cs" />
     <Compile Include="Enumerators\Gender.cs" />
     <Compile Include="ShortStory\ShortStory.cs" />
     <Compile Include="ShortStory\ShortStoryComment.cs" />
