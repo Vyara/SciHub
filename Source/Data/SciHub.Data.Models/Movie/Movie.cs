@@ -40,7 +40,9 @@ namespace SciHub.Data.Models.Movie
 
         public virtual Director Director { get; set; }
 
-        public int MoviePosterId { get; set; }
+        public int PosterId { get; set; }
+
+        public virtual MoviePoster Poster { get; set; }
 
         public int StudioId { get; set; }
 

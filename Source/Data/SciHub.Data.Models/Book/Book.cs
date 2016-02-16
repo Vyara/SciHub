@@ -38,7 +38,9 @@ namespace SciHub.Data.Models.Book
 
         public virtual BookAuthor Author { get; set; }
 
-        public int BookCoverId { get; set; }
+        public int CoverId { get; set; }
+
+        public virtual BookCover Cover { get; set; }
 
         public virtual ICollection<BookComment> Comments
         {
