@@ -1,8 +1,9 @@
 ﻿namespace SciHub.Data.Models.Book
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Common.Models;
+    using Data.Common.Models;
     using SciHub.Common.Constants.Models;
 
 
@@ -24,6 +25,8 @@
         [MinLength(BookModelConstants.AuthorLastNameMinLength)]
         [MaxLength(BookModelConstants.AuthorLastNameMaxLength)]
         public string LastName { get; set; }
+
+        public DateTime? BirthDate { get; set; }
 
         public virtual ICollection<Book> Books
         {

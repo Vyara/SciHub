@@ -62,12 +62,14 @@
     <Compile Include="Book\BookComment.cs" />
     <Compile Include="Book\BookCover.cs" />
     <Compile Include="Book\BookRating.cs" />
-    <Compile Include="Book\BookTag.cs" />
+    <Compile Include="Common\Actor.cs" />
+    <Compile Include="Common\Director.cs" />
+    <Compile Include="Common\Tag.cs" />
     <Compile Include="Enumerators\Gender.cs" />
+    <Compile Include="Movie\Movie.cs" />
     <Compile Include="ShortStory\ShortStory.cs" />
     <Compile Include="ShortStory\ShortStoryComment.cs" />
     <Compile Include="ShortStory\ShortStoryRating.cs" />
-    <Compile Include="ShortStory\ShortStoryTag.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

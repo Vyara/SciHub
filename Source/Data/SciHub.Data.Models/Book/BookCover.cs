@@ -1,6 +1,6 @@
 ﻿namespace SciHub.Data.Models.Book
 {
-    using Common.Models;
+    using Data.Common.Models;
 
     public class BookCover : BaseModel<int>
     {

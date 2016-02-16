@@ -2,20 +2,21 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Common.Models;
+    using Common;
+    using Data.Common.Models;
     using SciHub.Common.Constants.Models;
 
     public class Book : BaseModel<int>
     {
         private ICollection<BookComment> comments;
         private ICollection<BookRating> ratings;
-        private ICollection<BookTag> tags;
+        private ICollection<Tag> tags;
 
         public Book()
         {
             this.comments = new HashSet<BookComment>();
             this.ratings = new HashSet<BookRating>();
-            this.tags = new HashSet<BookTag>();
+            this.tags = new HashSet<Tag>();
         }
 
         [Required]
@@ -47,7 +48,7 @@
             set { this.ratings = value; }
         }
 
-        public virtual ICollection<BookTag> Tags
+        public virtual ICollection<Tag> Tags
         {
             get { return this.tags; }
             set { this.tags = value; }

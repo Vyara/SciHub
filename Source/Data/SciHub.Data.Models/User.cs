@@ -4,10 +4,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using Common.Models;
+    using Data.Common.Models;
+    using Enumerators;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using Enumerators;
     using SciHub.Common.Constants;
     using SciHub.Common.Constants.Models;
 

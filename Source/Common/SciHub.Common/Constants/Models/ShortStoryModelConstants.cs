@@ -2,8 +2,6 @@
 {
     public class ShortStoryModelConstants
     {
-        public const int TagMinLength = 1;
-        public const int TagMaxLength = 50;
         public const int RatingMinValue = 1;
         public const int RatingMaxValue = 5;
         public const int CommentMinLength = 2;
