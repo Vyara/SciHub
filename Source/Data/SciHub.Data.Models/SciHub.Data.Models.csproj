@@ -58,6 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enumerators\Gender.cs" />
+    <Compile Include="ShortStory\ShortStory.cs" />
+    <Compile Include="ShortStory\ShortStoryComment.cs" />
+    <Compile Include="ShortStory\ShortStoryRating.cs" />
+    <Compile Include="ShortStory\ShortStoryTag.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
