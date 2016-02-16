@@ -1,4 +1,5 @@
-﻿@model SciHub.Web.ViewModels.Account.RegisterViewModel
+﻿@using SciHub.Data.Models.Enumerators
+@model SciHub.Web.ViewModels.Account.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -15,6 +16,52 @@
         @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Avatar, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Avatar, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control datepicker"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Gender, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @foreach (var value in Enum.GetValues(typeof (Gender)))
+            {
+                @Html.RadioButtonFor(m => m.Gender, new {@class = "form-control"})
+                @Html.Label(value.ToString())
+            }
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.About, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.About, new { @class = "form-control" })
         </div>
     </div>
     <div class="form-group">
@@ -38,4 +85,9 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+    $(function () { 
+       $('.datepicker').datepicker(); 
+    });
+</script>
 }
