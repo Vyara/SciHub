@@ -74,6 +74,11 @@
     <Compile Include="ShortStory\ShortStory.cs" />
     <Compile Include="ShortStory\ShortStoryComment.cs" />
     <Compile Include="ShortStory\ShortStoryRating.cs" />
+    <Compile Include="TvShow\TvShow.cs" />
+    <Compile Include="TvShow\TvShowChannel.cs" />
+    <Compile Include="TvShow\TvShowComment.cs" />
+    <Compile Include="TvShow\TvShowPoster.cs" />
+    <Compile Include="TvShow\TvShowRating.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

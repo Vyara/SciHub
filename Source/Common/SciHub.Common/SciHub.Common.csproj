@@ -45,6 +45,7 @@
     <Compile Include="Constants\Models\BookModelConstants.cs" />
     <Compile Include="Constants\Models\MovieModelConstants.cs" />
     <Compile Include="Constants\Models\ShortStoryModelConstants.cs" />
+    <Compile Include="Constants\Models\TvShowModelConstants.cs" />
     <Compile Include="Constants\Models\UserModelConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

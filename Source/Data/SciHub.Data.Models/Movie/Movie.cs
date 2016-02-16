@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Book;
     using Common;
     using Data.Common.Models;
     using SciHub.Common.Constants.Models;
