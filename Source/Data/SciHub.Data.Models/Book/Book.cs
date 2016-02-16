@@ -28,6 +28,10 @@
         [Range(BookModelConstants.PublicationYearMinValue, BookModelConstants.PublicationYearMaxValue)]
         public int PublicationYear { get; set; }
 
+        [MinLength(BookModelConstants.SummaryMinLength)]
+        [MaxLength(BookModelConstants.SummaryMaxLength)]
+        public string Summary { get; set; }
+
         public int AuthorId { get; set; }
 
         public virtual BookAuthor Author { get; set; }

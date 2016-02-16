@@ -30,6 +30,10 @@
         [Range(MovieModelConstants.YearMinValue, MovieModelConstants.YearMaxValue)]
         public int Year { get; set; }
 
+        [MinLength(MovieModelConstants.SummaryMinLength)]
+        [MaxLength(MovieModelConstants.SummaryMaxLength)]
+        public string Summary { get; set; }
+
         public int DirectorId { get; set; }
 
         public virtual Director Director { get; set; }
