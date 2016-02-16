@@ -11,6 +11,7 @@
         {
             AutofacConfig.RegisterAutofac();
             AreaRegistration.RegisterAllAreas();
+            DatabaseConfig.Initialize();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
