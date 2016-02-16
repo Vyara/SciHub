@@ -1,4 +1,4 @@
-﻿namespace SciHub.Data.Common
+﻿namespace SciHub.Data.Common.Repositories
 {
     using System.Linq;
     using Models;
@@ -17,12 +17,20 @@
 
         T GetById(TKey id);
 
+        void Update(T entity);
+
         void Add(T entity);
 
         void Delete(T entity);
 
+        void Delete(TKey id);
+
         void HardDelete(T entity);
 
-        void Save();
+        T Attach(T entity);
+
+        void Detach(T entity);
+
+        void SaveChanges();
     }
 }
