@@ -6,15 +6,18 @@
     using Data.Common.Models;
     using Movie;
     using SciHub.Common.Constants;
+    using TvShow;
 
 
     public class Director : BaseModel<int>
     {
         private ICollection<Movie> movies;
+        private ICollection<TvShow> tvShows;
 
         public Director()
         {
             this.movies = new HashSet<Movie>();
+            this.tvShows = new HashSet<TvShow>();
         }
 
         [Required]
@@ -33,6 +36,12 @@
         {
             get { return this.movies; }
             set { this.movies = value; }
+        }
+
+        public virtual ICollection<TvShow> TvShows
+        {
+            get { return this.tvShows; }
+            set { this.tvShows = value; }
         }
     }
 }

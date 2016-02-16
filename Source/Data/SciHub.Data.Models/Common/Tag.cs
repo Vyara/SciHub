@@ -7,6 +7,7 @@
     using Movie;
     using SciHub.Common.Constants;
     using ShortStory;
+    using TvShow;
 
 
     public class Tag : BaseModel<int>
@@ -14,12 +15,14 @@
         private ICollection<Movie> movies;
         private ICollection<Book> books;
         private ICollection<ShortStory> shortStories;
+        private ICollection<TvShow> tvShows;
 
         public Tag()
         {
             this.movies = new HashSet<Movie>();
             this.books = new HashSet<Book>();
             this.shortStories = new HashSet<ShortStory>();
+            this.tvShows = new HashSet<TvShow>();
         }
 
         [Required]
@@ -43,6 +46,12 @@
         {
             get { return this.shortStories; }
             set { this.shortStories = value; }
+        }
+
+        public virtual ICollection<TvShow> TvShows
+        {
+            get { return this.tvShows; }
+            set { this.tvShows = value; }
         }
     }
 }
