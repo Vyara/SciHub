@@ -1,4 +1,6 @@
-﻿namespace SciHub.Data.Models.Book
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SciHub.Data.Models.Book
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -36,9 +38,7 @@
 
         public virtual BookAuthor Author { get; set; }
 
-        public int CoverId { get; set; }
-
-        public virtual BookCover Cover { get; set; }
+        public int BookCoverId { get; set; }
 
         public virtual ICollection<BookComment> Comments
         {

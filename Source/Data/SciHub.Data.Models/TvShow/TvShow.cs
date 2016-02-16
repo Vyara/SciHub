@@ -1,4 +1,6 @@
-﻿namespace SciHub.Data.Models.TvShow
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SciHub.Data.Models.TvShow
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -40,9 +42,7 @@
         [MaxLength(TvShowModelConstants.SummaryMaxLength)]
         public string Summary { get; set; }
 
-        public int PosterId { get; set; }
-
-        public virtual TvShowPoster Poster { get; set; }
+        public int TvShowPosterId { get; set; }
 
         public int ChannelId { get; set; }
 

@@ -10,5 +10,6 @@
 
         public int TvShowId { get; set; }
 
+        public virtual TvShow TvShow { get; set; }
     }
 }

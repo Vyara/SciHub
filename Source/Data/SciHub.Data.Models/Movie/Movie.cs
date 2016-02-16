@@ -1,4 +1,6 @@
-﻿namespace SciHub.Data.Models.Movie
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SciHub.Data.Models.Movie
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -38,9 +40,7 @@
 
         public virtual Director Director { get; set; }
 
-        public int PosterId { get; set; }
-
-        public virtual MoviePoster Poster { get; set; }
+        public int MoviePosterId { get; set; }
 
         public int StudioId { get; set; }
 
