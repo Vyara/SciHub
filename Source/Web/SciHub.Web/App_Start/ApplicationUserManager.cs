@@ -19,7 +19,7 @@ namespace SciHub.Web
                       IdentityFactoryOptions<ApplicationUserManager> options,
                       IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<User>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<User>(context.Get<SciHubDbContext>()));
 
             manager.UserValidator = new UserValidator<User>(manager)
             {
