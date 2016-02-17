@@ -15,6 +15,6 @@
         public const int PublicationYearMinValue = 300;
         public const int PublicationYearMaxValue = 5000;
         public const int SummaryMinLength = 2;
-        public const int SummaryMaxLength = 500;
+        public const int SummaryMaxLength = 1000;
     }
 }

@@ -1,4 +1,5 @@
-﻿using SciHub.Data.Models.Common;
+﻿using SciHub.Data.Models.Book;
+using SciHub.Data.Models.Common;
 using SciHub.Data.Models.ShortStory;
 
 namespace SciHub.Data.DataSeeders
@@ -76,8 +77,8 @@ namespace SciHub.Data.DataSeeders
 
             const string defaultPassword = "default123";
             var userManager = new UserManager<User>(new UserStore<User>(context));
-            var webClient = new WebClient();
 
+            // Users 
             var newton = new User
             {
                 UserName = "TheLordOfGravity",
@@ -180,6 +181,7 @@ namespace SciHub.Data.DataSeeders
 
             context.SaveChanges();
 
+            // Tags
             var dark = new Tag
             {
                 Name = "dark"
@@ -205,15 +207,59 @@ namespace SciHub.Data.DataSeeders
                 Name = "aliens"
             };
 
+            var planet = new Tag
+            {
+                Name = "planet"
+            };
+
+
+            var space = new Tag
+            {
+                Name = "space"
+            };
+
+            var distopian = new Tag
+            {
+                Name = "distopian"
+            };
+
+            var zombies = new Tag
+            {
+                Name = "zombies"
+            };
+
+            var apocalypitc = new Tag
+            {
+                Name = "apocalyptic"
+            };
+
+
+            var survival = new Tag
+            {
+                Name = "survival"
+            };
+
+            var cyberpunk = new Tag
+            {
+                Name = "cyberpunk"
+            };
+
             context.Tags.Add(dark);
             context.Tags.Add(funny);
             context.Tags.Add(sad);
             context.Tags.Add(ai);
             context.Tags.Add(aliens);
+            context.Tags.Add(planet);
+            context.Tags.Add(space);
+            context.Tags.Add(distopian);
+            context.Tags.Add(zombies);
+            context.Tags.Add(apocalypitc);
+            context.Tags.Add(survival);
+            context.Tags.Add(cyberpunk);
 
             context.SaveChanges();
 
-
+            // Short Stories
             var firstStory = new ShortStory
             {
                 Title = "The Dawning",
@@ -332,6 +378,171 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
             context.ShortStories.Add(firstStory);
             context.ShortStories.Add(secondStory);
             context.ShortStories.Add(thirdStory);
+            context.SaveChanges();
+
+            var webClient = new WebClient();
+
+            // Books
+            var herbert = new BookAuthor
+            {
+                FirstName = "Frank",
+                LastName = "Herbert",
+                BirthDate = new DateTime(1920, 10, 8)
+            };
+
+            var orwell = new BookAuthor
+            {
+                FirstName = "George",
+                LastName = "Orwell",
+                BirthDate = new DateTime(1903, 1, 23)
+            };
+
+
+            var gibson = new BookAuthor
+            {
+                FirstName = "William",
+                LastName = "Gibson",
+                BirthDate = new DateTime(1948, 3, 17)
+            };
+
+            context.BookAuthors.Add(herbert);
+            context.BookAuthors.Add(orwell);
+            context.BookAuthors.Add(gibson);
+
+            context.SaveChanges();
+
+            var dune = new Book
+            {
+                Title = "Dune",
+                PublicationYear = 1965,
+                Summary = @"Set in the far future amidst a sprawling feudal interstellar empire where planetary dynasties are controlled by noble houses that owe an allegiance to the imperial House Corrino, Dune tells the story of young Paul Atreides (the heir apparent to Duke Leto Atreides and heir of House Atreides) as he and his family accept control of the desert planet Arrakis, the only source of the 'spice' melange, the most important and valuable substance in the cosmos. The story explores the complex, multi-layered interactions of politics, religion, ecology, technology, and human emotion as the forces of the empire confront each other for control of Arrakis.",
+                AuthorId = herbert.Id,
+                Cover = new BookCover
+                {
+                    Image = webClient.DownloadData("https://upload.wikimedia.org/wikipedia/en/5/5a/FrankHerbert_Dune_1st.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            dune.Tags.Add(planet);
+            dune.Tags.Add(space);
+
+            var ninety = new Book
+            {
+                Title = "1984",
+                PublicationYear = 1949,
+                Summary = @"The year 1984 has come and gone, but George Orwell's prophetic, nightmarish vision in 1949 of the world we were becoming is timelier than ever. 1984 is still the great modern classic of negative utopia -a startlingly original and haunting novel that creates an imaginary world that is completely convincing, from the first sentence to the last four words. No one can deny the novel's hold on the imaginations of whole generations, or the power of its admonitions -a power that seems to grow, not lessen, with the passage of time.",
+                AuthorId = orwell.Id,
+                Cover = new BookCover
+                {
+                    Image = webClient.DownloadData("https://upload.wikimedia.org/wikipedia/en/c/c3/1984first.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            ninety.Ratings.Add(new BookRating
+            {
+                Value = 5,
+                UserId = einstein.Id,
+            });
+
+            ninety.Ratings.Add(new BookRating
+            {
+                Value = 3,
+                UserId = paranoidAndroid.Id,
+            });
+
+            ninety.Comments.Add(new BookComment
+            {
+                Content = "One of the best",
+                AuthorId = testFemaleUser.Id
+            });
+
+            ninety.Tags.Add(distopian);
+
+            var neuromancer = new Book
+            {
+                Title = "Neuromancer",
+                PublicationYear = 1984,
+                Summary = @"The Matrix is a world within the world, a global consensus- hallucination, the representation of every byte of data in cyberspace",
+                AuthorId = gibson.Id,
+                Cover = new BookCover
+                {
+                    Image = webClient.DownloadData("https://upload.wikimedia.org/wikipedia/en/4/4b/Neuromancer_(Book).jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            neuromancer.Ratings.Add(new BookRating
+            {
+                Value = 5,
+                UserId = newton.Id,
+            });
+
+            neuromancer.Ratings.Add(new BookRating
+            {
+                Value = 4,
+                UserId = testMaleUser.Id,
+            });
+
+            neuromancer.Comments.Add(new BookComment
+            {
+                Content = "Futuristic genious",
+                AuthorId = testFemaleUser.Id
+            });
+
+            neuromancer.Comments.Add(new BookComment
+            {
+                Content = "Loved it!",
+                AuthorId = paranoidAndroid.Id
+            });
+
+            neuromancer.Tags.Add(cyberpunk);
+
+
+            var mnemonic = new Book
+            {
+                Title = "Johnny Mnemonic",
+                PublicationYear = 1981,
+                Summary = @"Johnny is a courier. He carries data, uploaded into his brain through a jack implanted in his skull. And so Johnny's troubles begin. The data is stolen, and to get it back the owners have hired the Yakuza who intend to get hold of Johnny. But all they really need is his cryogenically frozen head.",
+                AuthorId = gibson.Id,
+                Cover = new BookCover
+                {
+                    Image = webClient.DownloadData("https://www.outerplaces.com/images/user_upload/covers7.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            mnemonic.Ratings.Add(new BookRating
+            {
+                Value = 3,
+                UserId = newton.Id,
+            });
+
+            mnemonic.Ratings.Add(new BookRating
+            {
+                Value = 4,
+                UserId = testMaleUser.Id,
+            });
+
+            mnemonic.Comments.Add(new BookComment
+            {
+                Content = "Amazing",
+                AuthorId = testMaleUser.Id
+            });
+
+            mnemonic.Comments.Add(new BookComment
+            {
+                Content = "Words cannot describe how I love this book",
+                AuthorId = paranoidAndroid.Id
+            });
+
+            mnemonic.Tags.Add(cyberpunk);
+
+            context.Books.Add(dune);
+            context.Books.Add(ninety);
+            context.Books.Add(neuromancer);
+            context.Books.Add(mnemonic);
             context.SaveChanges();
 
         }
