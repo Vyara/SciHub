@@ -6,6 +6,7 @@
     using Autofac;
     using Autofac.Integration.Mvc;
     using Data;
+    using Data.Common.Repositories;
 
     public static class AutofacConfig
     {
@@ -41,6 +42,10 @@
         {
             builder.Register(x => new SciHubDbContext())
                 .As<DbContext>()
+                .InstancePerRequest();
+
+            builder.RegisterGeneric(typeof(DbRepository<>))
+                .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
         }
     }
