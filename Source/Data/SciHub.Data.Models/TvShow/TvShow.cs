@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace SciHub.Data.Models.TvShow
+﻿namespace SciHub.Data.Models.TvShow
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -34,9 +32,8 @@ namespace SciHub.Data.Models.TvShow
         [Range(TvShowModelConstants.StartYearMinValue, TvShowModelConstants.StartYearMaxValue)]
         public int StartYear { get; set; }
 
-        [Required]
         [Range(TvShowModelConstants.EndYearMinValue, TvShowModelConstants.EndYearMaxValue)]
-        public int EndYear { get; set; }
+        public int? EndYear { get; set; }
 
         [MinLength(TvShowModelConstants.SummaryMinLength)]
         [MaxLength(TvShowModelConstants.SummaryMaxLength)]

@@ -1,28 +1,22 @@
-﻿using SciHub.Data.Models.Book;
-using SciHub.Data.Models.Common;
-using SciHub.Data.Models.Movie;
-using SciHub.Data.Models.ShortStory;
-
-namespace SciHub.Data.DataSeeders
+﻿namespace SciHub.Data.DataSeeders
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using System.Text;
-    using System.Threading.Tasks;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using SciHub.Common;
     using SciHub.Common.Constants;
-    using SciHub.Data.Models;
-    using SciHub.Data.Models.Enumerators;
-
+    using Models;
+    using Models.Book;
+    using Models.Common;
+    using Models.Enumerators;
+    using Models.Movie;
+    using Models.ShortStory;
+    using Models.TvShow;
 
     internal static class DataSeeder
     {
-        private static readonly Random random = new Random();
-
         internal static void SeedUserRoles(SciHubDbContext context)
         {
             if (context.Roles.Any())
@@ -250,6 +244,16 @@ namespace SciHub.Data.DataSeeders
                 Name = "cyborgs"
             };
 
+            var exploration = new Tag
+            {
+                Name = "exploration"
+            };
+
+            var timeTravel = new Tag
+            {
+                Name = "time travel"
+            };
+
             context.Tags.Add(dark);
             context.Tags.Add(funny);
             context.Tags.Add(sad);
@@ -263,6 +267,8 @@ namespace SciHub.Data.DataSeeders
             context.Tags.Add(survival);
             context.Tags.Add(cyberpunk);
             context.Tags.Add(cyborgs);
+            context.Tags.Add(exploration);
+            context.Tags.Add(timeTravel);
 
             context.SaveChanges();
 
@@ -637,6 +643,20 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
                 BirthDate = new DateTime(1940, 7, 13)
             };
 
+            var tennant = new Actor
+            {
+                FirstName = "David",
+                LastName = "Tennant",
+                BirthDate = new DateTime(1971, 4, 18)
+            };
+
+            var coleman = new Actor
+            {
+                FirstName = "Jenna",
+                LastName = "Coleman",
+                BirthDate = new DateTime(1986, 4, 27)
+            };
+
             context.Actors.Add(sigorney);
             context.Actors.Add(daisy);
             context.Actors.Add(nancy);
@@ -649,6 +669,8 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
             context.Actors.Add(nathan);
             context.Actors.Add(patrick);
             context.Actors.Add(linda);
+            context.Actors.Add(tennant);
+            context.Actors.Add(coleman);
 
             context.SaveChanges();
 
@@ -696,12 +718,41 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
                 BirthDate = new DateTime(1952, 8, 19)
             };
 
+            var moffat = new Director
+            {
+                FirstName = "Steven",
+                LastName = "Moffat",
+                BirthDate = new DateTime(1961, 11, 18)
+            };
+
+            var wheatley = new Director
+            {
+                FirstName = "Ben",
+                LastName = "Wheatley"
+            };
+
+            var landau = new Director
+            {
+                FirstName = "Les",
+                LastName = "Landau"
+            };
+
+            var scheerer = new Director
+            {
+                FirstName = "Robert",
+                LastName = "Scheerer"
+            };
+
             context.Directors.Add(ridley);
             context.Directors.Add(cameron);
             context.Directors.Add(abrams);
             context.Directors.Add(verhoven);
             context.Directors.Add(whedon);
             context.Directors.Add(frakes);
+            context.Directors.Add(wheatley);
+            context.Directors.Add(moffat);
+            context.Directors.Add(landau);
+            context.Directors.Add(scheerer);
 
             context.SaveChanges();
 
@@ -999,6 +1050,152 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
             context.Movies.Add(serenity);
             context.Movies.Add(starTrek);
 
+            context.SaveChanges();
+
+            //Channels
+
+            var foxTv = new TvShowChannel
+            {
+                Name = "20th Century-Fox Television(Fox Tv)"
+            };
+
+            var nbc = new TvShowChannel
+            {
+                Name = "National Broadcasting Company(NBC)"
+            };
+
+            var bbc = new TvShowChannel
+            {
+                Name = "British Broadcasting Corporation(BBC)"
+            };
+
+            context.TvShowChannels.Add(foxTv);
+            context.TvShowChannels.Add(nbc);
+            context.TvShowChannels.Add(bbc);
+
+            context.SaveChanges();
+
+            //TvShows
+            var firefly = new TvShow
+            {
+                Title = "Firefly",
+                StartYear = 2002,
+                EndYear = 2003,
+                Summary = @"Five hundred years in the future, a renegade crew aboard a small spacecraft tries to survive as they travel the unknown parts of the galaxy and evade warring factions as well as authority agents out to get them.",
+                ChannelId = foxTv.Id,
+                Poster = new TvShowPoster
+                {
+                    Image = webClient.DownloadData("https://gooreviewsonline.files.wordpress.com/2012/11/firefly-poster-2.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            firefly.Ratings.Add(new TvShowRating
+            {
+                Value = 5,
+                UserId = testFemaleUser.Id,
+            });
+
+            firefly.Ratings.Add(new TvShowRating
+            {
+                Value = 5,
+                UserId = testMaleUser.Id,
+            });
+
+
+            firefly.Comments.Add(new TvShowComment
+            {
+                Content = "Very nice but only one season :(",
+                AuthorId = turing.Id
+            });
+
+            firefly.Actors.Add(nathan);
+            firefly.Actors.Add(gina);
+            firefly.Directors.Add(whedon);
+
+            firefly.Tags.Add(space);
+            firefly.Tags.Add(funny);
+
+            var starTrekTv = new TvShow
+            {
+                Title = "Star Trek: The Next Generation",
+                StartYear = 1987,
+                EndYear = 1994,
+                Summary = @"Set decades after Captain Kirk's five-year mission, a new generation of Starfleet officers set off in a new Enterprise on their own mission to go where no one has gone before.",
+                ChannelId = nbc.Id,
+                Poster = new TvShowPoster
+                {
+                    Image = webClient.DownloadData("https://fanart.tv/fanart/tv/71470/tvposter/star-trek-the-next-generation-521b936d8d1d0.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            starTrekTv.Ratings.Add(new TvShowRating
+            {
+                Value = 5,
+                UserId = testFemaleUser.Id,
+            });
+
+            starTrekTv.Ratings.Add(new TvShowRating
+            {
+                Value = 5,
+                UserId = testMaleUser.Id,
+            });
+
+
+            starTrekTv.Comments.Add(new TvShowComment
+            {
+                Content = "The essential sci fi series",
+                AuthorId = turing.Id
+            });
+
+            starTrekTv.Actors.Add(patrick);
+            starTrekTv.Actors.Add(jonathan);
+            starTrekTv.Directors.Add(landau);
+            starTrekTv.Directors.Add(scheerer);
+
+            starTrekTv.Tags.Add(space);
+            starTrekTv.Tags.Add(exploration);
+
+
+            var who = new TvShow
+            {
+                Title = "Doctor Who",
+                StartYear = 2005,
+                Summary = @"The further adventures of the time traveling alien adventurer and his companions.",
+                ChannelId = bbc.Id,
+                Poster = new TvShowPoster
+                {
+                    Image = webClient.DownloadData("http://merchandise.thedoctorwhosite.co.uk/wp-content/uploads/11-doctors-poster-1.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            who.Ratings.Add(new TvShowRating
+            {
+                Value = 4,
+                UserId = testFemaleUser.Id,
+            });
+
+            who.Comments.Add(new TvShowComment
+            {
+                Content = "Very Entertaining!",
+                AuthorId = turing.Id
+            });
+
+            who.Actors.Add(tennant);
+            who.Actors.Add(coleman);
+            who.Directors.Add(wheatley);
+            who.Directors.Add(moffat);
+
+            who.Tags.Add(space);
+            who.Tags.Add(timeTravel);
+            who.Tags.Add(funny);
+            who.Tags.Add(aliens);
+
+            context.TvShows.Add(firefly);
+            context.TvShows.Add(starTrekTv);
+            context.TvShows.Add(who);
             context.SaveChanges();
         }
     }
