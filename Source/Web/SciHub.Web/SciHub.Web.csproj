@@ -357,6 +357,10 @@
       <Project>{003256c4-7476-40e5-a56f-a297fe413a69}</Project>
       <Name>SciHub.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SciHub.Web.Infrastructure\SciHub.Web.Infrastructure.csproj">
+      <Project>{b5d262f1-fcf5-4cf9-bc2d-fab9ff6ea26c}</Project>
+      <Name>SciHub.Web.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
