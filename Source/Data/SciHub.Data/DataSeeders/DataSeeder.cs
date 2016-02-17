@@ -1,5 +1,6 @@
 ﻿using SciHub.Data.Models.Book;
 using SciHub.Data.Models.Common;
+using SciHub.Data.Models.Movie;
 using SciHub.Data.Models.ShortStory;
 
 namespace SciHub.Data.DataSeeders
@@ -244,6 +245,11 @@ namespace SciHub.Data.DataSeeders
                 Name = "cyberpunk"
             };
 
+            var cyborgs = new Tag
+            {
+                Name = "cyborgs"
+            };
+
             context.Tags.Add(dark);
             context.Tags.Add(funny);
             context.Tags.Add(sad);
@@ -256,6 +262,7 @@ namespace SciHub.Data.DataSeeders
             context.Tags.Add(apocalypitc);
             context.Tags.Add(survival);
             context.Tags.Add(cyberpunk);
+            context.Tags.Add(cyborgs);
 
             context.SaveChanges();
 
@@ -545,6 +552,454 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
             context.Books.Add(mnemonic);
             context.SaveChanges();
 
+            // Actors
+            var sigorney = new Actor
+            {
+                FirstName = "Sigorney",
+                LastName = "Weaver",
+                BirthDate = new DateTime(1949, 8, 10)
+            };
+
+            var linda = new Actor
+            {
+                FirstName = "Linda",
+                LastName = "Hamilton",
+                BirthDate = new DateTime(1956, 9, 26)
+            };
+
+            var daisy = new Actor
+            {
+                FirstName = "Daisy",
+                LastName = "Ridley",
+                BirthDate = new DateTime(1992, 4, 10)
+            };
+
+            var nancy = new Actor
+            {
+                FirstName = "Nancy",
+                LastName = "Allen",
+                BirthDate = new DateTime(1950, 6, 24)
+            };
+
+            var gina = new Actor
+            {
+                FirstName = "Gina",
+                LastName = "Torres",
+                BirthDate = new DateTime(1969, 4, 25)
+            };
+
+            var jonathan = new Actor
+            {
+                FirstName = "Jonathan",
+                LastName = "Frakes",
+                BirthDate = new DateTime(1952, 8, 19)
+            };
+
+            var tom = new Actor
+            {
+                FirstName = "Tom",
+                LastName = "Skerritt",
+                BirthDate = new DateTime(1933, 8, 25)
+            };
+
+            var arnold = new Actor
+            {
+                FirstName = "Arnold",
+                LastName = "Schwarzenegger",
+                BirthDate = new DateTime(1947, 7, 30)
+            };
+
+            var boyega = new Actor
+            {
+                FirstName = "John",
+                LastName = "Boyega",
+                BirthDate = new DateTime(1992, 3, 17)
+            };
+
+            var weller = new Actor
+            {
+                FirstName = "Peter",
+                LastName = "Weller",
+                BirthDate = new DateTime(1947, 6, 24)
+            };
+
+            var nathan = new Actor
+            {
+                FirstName = "Nathan",
+                LastName = "Fillion",
+                BirthDate = new DateTime(1971, 3, 27)
+            };
+
+            var patrick = new Actor
+            {
+                FirstName = "Patrick",
+                LastName = "Stewart",
+                BirthDate = new DateTime(1940, 7, 13)
+            };
+
+            context.Actors.Add(sigorney);
+            context.Actors.Add(daisy);
+            context.Actors.Add(nancy);
+            context.Actors.Add(gina);
+            context.Actors.Add(jonathan);
+            context.Actors.Add(tom);
+            context.Actors.Add(arnold);
+            context.Actors.Add(boyega);
+            context.Actors.Add(weller);
+            context.Actors.Add(nathan);
+            context.Actors.Add(patrick);
+            context.Actors.Add(linda);
+
+            context.SaveChanges();
+
+            //Directors
+
+            var ridley = new Director
+            {
+                FirstName = "Ridley",
+                LastName = "Scott",
+                BirthDate = new DateTime(1937, 11, 30)
+            };
+
+            var cameron = new Director
+            {
+                FirstName = "James",
+                LastName = "Cameron",
+                BirthDate = new DateTime(1954, 8, 16)
+            };
+
+            var abrams = new Director
+            {
+                FirstName = "J.J.",
+                LastName = "Abrams",
+                BirthDate = new DateTime(1966, 6, 27)
+            };
+
+            var verhoven = new Director
+            {
+                FirstName = "Paul",
+                LastName = "Verhoeven",
+                BirthDate = new DateTime(1938, 7, 18)
+            };
+
+            var whedon = new Director
+            {
+                FirstName = "Joss",
+                LastName = "Whedon",
+                BirthDate = new DateTime(1964, 6, 23)
+            };
+
+            var frakes = new Director
+            {
+                FirstName = "Jonathan",
+                LastName = "Frakes",
+                BirthDate = new DateTime(1952, 8, 19)
+            };
+
+            context.Directors.Add(ridley);
+            context.Directors.Add(cameron);
+            context.Directors.Add(abrams);
+            context.Directors.Add(verhoven);
+            context.Directors.Add(whedon);
+            context.Directors.Add(frakes);
+
+            context.SaveChanges();
+
+            // Studios
+
+            var fox = new MovieStudio
+            {
+                Name = "20th Century-Fox"
+            };
+
+            var universal = new MovieStudio
+            {
+                Name = "Universal Pictures"
+            };
+
+            var carolco = new MovieStudio
+            {
+                Name = "Carolco Pictures"
+
+            };
+
+            var lucas = new MovieStudio
+            {
+                Name = "Lucasfilm"
+
+            };
+
+            var metro = new MovieStudio
+            {
+                Name = "Metro-Goldwyn-Mayer"
+            };
+
+            var paramount = new MovieStudio
+            {
+                Name = "Paramount Pictures"
+            };
+
+            context.MovieStudios.Add(fox);
+            context.MovieStudios.Add(universal);
+            context.MovieStudios.Add(carolco);
+            context.MovieStudios.Add(lucas);
+            context.MovieStudios.Add(metro);
+            context.MovieStudios.Add(paramount);
+
+            context.SaveChanges();
+
+            // Movies
+
+            var alien = new Movie
+            {
+                Title = "Alien",
+                Year = 1979,
+                Summary = @"The commercial vessel Nostromo receives a distress call from an unexplored planet. After searching for survivors, the crew heads home only to realize that a deadly bioform has joined them.",
+                DirectorId = ridley.Id,
+                StudioId = fox.Id,
+                Poster = new MoviePoster
+                {
+                    Image = webClient.DownloadData("http://i.telegraph.co.uk/multimedia/archive/03064/Alien-intro_3064438b.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            alien.Ratings.Add(new MovieRating
+            {
+                Value = 5,
+                UserId = newton.Id,
+            });
+
+            alien.Ratings.Add(new MovieRating
+            {
+                Value = 4,
+                UserId = testMaleUser.Id,
+            });
+
+            alien.Comments.Add(new MovieComment
+            {
+                Content = "Scary and intriguing all the way!",
+                AuthorId = testMaleUser.Id
+            });
+
+            alien.Comments.Add(new MovieComment
+            {
+                Content = "Beautiful",
+                AuthorId = paranoidAndroid.Id
+            });
+
+            alien.Actors.Add(sigorney);
+            alien.Actors.Add(tom);
+
+            alien.Tags.Add(aliens);
+            alien.Tags.Add(space);
+            alien.Tags.Add(dark);
+            alien.Tags.Add(survival);
+
+            var terminatorTwo = new Movie
+            {
+                Title = "Terminator 2: Judgment Day",
+                Year = 1991,
+                Summary = @"A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her young son, John Connor, from a more advanced cyborg, made out of liquid metal.",
+                DirectorId = cameron.Id,
+                StudioId = carolco.Id,
+                Poster = new MoviePoster
+                {
+                    Image = webClient.DownloadData("https://posterspy.com/wp-content/uploads/2014/08/TERMINATOR_POSTERSPY850px.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            terminatorTwo.Ratings.Add(new MovieRating
+            {
+                Value = 3,
+                UserId = testFemaleUser.Id,
+            });
+
+            terminatorTwo.Ratings.Add(new MovieRating
+            {
+                Value = 4,
+                UserId = testMaleUser.Id,
+            });
+
+            terminatorTwo.Ratings.Add(new MovieRating
+            {
+                Value = 5,
+                UserId = newton.Id,
+            });
+
+            terminatorTwo.Comments.Add(new MovieComment
+            {
+                Content = "Cyborgs and guns!",
+                AuthorId = testMaleUser.Id
+            });
+
+            terminatorTwo.Comments.Add(new MovieComment
+            {
+                Content = "Thrilling!",
+                AuthorId = ada.Id
+            });
+
+            terminatorTwo.Actors.Add(arnold);
+            terminatorTwo.Actors.Add(nancy);
+
+            terminatorTwo.Tags.Add(ai);
+            terminatorTwo.Tags.Add(distopian);
+            terminatorTwo.Tags.Add(cyborgs);
+
+            var starWars = new Movie
+            {
+                Title = "Star Wars: Episode VII - The Force Awakens",
+                Year = 2015,
+                Summary = @"Three decades after the defeat of the Galactic Empire, a new threat arises. The First Order attempts to rule the galaxy and only a ragtag group of heroes can stop them, along with the help of the Resistance.",
+                DirectorId = abrams.Id,
+                StudioId = lucas.Id,
+                Poster = new MoviePoster
+                {
+                    Image = webClient.DownloadData("http://a.dilcdn.com/bl/wp-content/uploads/sites/6/2015/10/star-wars-force-awakens-official-poster.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            starWars.Ratings.Add(new MovieRating
+            {
+                Value = 3,
+                UserId = turing.Id,
+            });
+
+
+            starWars.Actors.Add(daisy);
+            starWars.Actors.Add(boyega);
+
+            starWars.Tags.Add(space);
+
+            var robocop = new Movie
+            {
+                Title = "Robocop",
+                Year = 1987,
+                Summary = @"In a dystopic and crime-ridden Detroit, a terminally wounded cop returns to the force as a powerful cyborg haunted by submerged memories.",
+                DirectorId = verhoven.Id,
+                StudioId = metro.Id,
+                Poster = new MoviePoster
+                {
+                    Image = webClient.DownloadData("http://www.goautographs.com/media/catalog/product/cache/1/image/800x/040ec09b1e35df139433887a97daa66f/2/2/22250MPMO.JPG"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            robocop.Ratings.Add(new MovieRating
+            {
+                Value = 5,
+                UserId = testFemaleUser.Id,
+            });
+
+            robocop.Ratings.Add(new MovieRating
+            {
+                Value = 5,
+                UserId = testMaleUser.Id,
+            });
+
+
+            robocop.Comments.Add(new MovieComment
+            {
+                Content = "Hands down best movie of all times!",
+                AuthorId = testMaleUser.Id
+            });
+
+            robocop.Actors.Add(weller);
+            robocop.Actors.Add(linda);
+
+            robocop.Tags.Add(ai);
+            robocop.Tags.Add(distopian);
+            robocop.Tags.Add(cyborgs);
+
+            var serenity = new Movie
+            {
+                Title = "Serenity",
+                Year = 2005,
+                Summary = @"The crew of the ship Serenity tries to evade an assassin sent to recapture one of their number who is telepathic.",
+                DirectorId = whedon.Id,
+                StudioId = universal.Id,
+                Poster = new MoviePoster
+                {
+                    Image = webClient.DownloadData("http://cdn.fontmeme.com/images/Serenity-Poster.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            serenity.Ratings.Add(new MovieRating
+            {
+                Value = 3,
+                UserId = testFemaleUser.Id,
+            });
+
+            serenity.Ratings.Add(new MovieRating
+            {
+                Value = 4,
+                UserId = testMaleUser.Id,
+            });
+
+
+            serenity.Comments.Add(new MovieComment
+            {
+                Content = "Firefly!",
+                AuthorId = paranoidAndroid.Id
+            });
+
+            serenity.Actors.Add(nathan);
+            serenity.Actors.Add(gina);
+
+            serenity.Tags.Add(space);
+            serenity.Tags.Add(funny);
+
+            var starTrek = new Movie
+            {
+                Title = "Star Trek: First Contact",
+                Year = 1996,
+                Summary = @"The Borg go back in time intent on preventing Earth's first contact with an alien species. Captain Picard and his crew pursue them to ensure that Zefram Cochrane makes his maiden flight reaching warp speed.",
+                DirectorId = frakes.Id,
+                StudioId = paramount.Id,
+                Poster = new MoviePoster
+                {
+                    Image = webClient.DownloadData("http://i.imgur.com/pBiGr19.jpg"),
+                    ImageFileExtention = "jpg"
+                }
+            };
+
+            starTrek.Ratings.Add(new MovieRating
+            {
+                Value = 5,
+                UserId = testFemaleUser.Id,
+            });
+
+            starTrek.Ratings.Add(new MovieRating
+            {
+                Value = 4,
+                UserId = testMaleUser.Id,
+            });
+
+
+            starTrek.Comments.Add(new MovieComment
+            {
+                Content = "Best star trek movie",
+                AuthorId = turing.Id
+            });
+
+            starTrek.Actors.Add(patrick);
+            starTrek.Actors.Add(jonathan);
+
+            starTrek.Tags.Add(space);
+            starTrek.Tags.Add(aliens);
+            starTrek.Tags.Add(dark);
+
+            context.Movies.Add(alien);
+            context.Movies.Add(terminatorTwo);
+            context.Movies.Add(starWars);
+            context.Movies.Add(robocop);
+            context.Movies.Add(serenity);
+            context.Movies.Add(starTrek);
+
+            context.SaveChanges();
         }
     }
 }
