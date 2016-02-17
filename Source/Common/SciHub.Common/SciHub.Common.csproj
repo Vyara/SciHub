@@ -48,6 +48,7 @@
     <Compile Include="Constants\Models\TvShowModelConstants.cs" />
     <Compile Include="Constants\Models\UserModelConstants.cs" />
     <Compile Include="Constants\UserRoleConstants.cs" />
+    <Compile Include="Constants\WebConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Constants\Models\UserDefaultPictureConstants.cs" />
   </ItemGroup>

@@ -206,6 +206,7 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -356,6 +357,14 @@
     <ProjectReference Include="..\..\Data\SciHub.Data\SciHub.Data.csproj">
       <Project>{003256c4-7476-40e5-a56f-a297fe413a69}</Project>
       <Name>SciHub.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\SciHub.Services.Data\SciHub.Services.Data.csproj">
+      <Project>{8946baeb-f242-4630-87e1-1c97c1188a47}</Project>
+      <Name>SciHub.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\SciHub.Services.Web\SciHub.Services.Web.csproj">
+      <Project>{78265bc5-c2bc-4f15-a61f-d3edc2caf8e8}</Project>
+      <Name>SciHub.Services.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\SciHub.Web.Infrastructure\SciHub.Web.Infrastructure.csproj">
       <Project>{b5d262f1-fcf5-4cf9-bc2d-fab9ff6ea26c}</Project>

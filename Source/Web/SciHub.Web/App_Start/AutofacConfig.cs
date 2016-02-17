@@ -5,8 +5,11 @@
     using System.Web.Mvc;
     using Autofac;
     using Autofac.Integration.Mvc;
+    using Controllers;
     using Data;
     using Data.Common.Repositories;
+    using Services.Data.Contracts;
+    using Services.Web;
 
     public static class AutofacConfig
     {
@@ -43,10 +46,19 @@
             builder.Register(x => new SciHubDbContext())
                 .As<DbContext>()
                 .InstancePerRequest();
+            builder.Register(x => new HttpCacheService())
+                .As<ICacheService>()
+                .InstancePerRequest();
+
+            var servicesAssembly = Assembly.GetAssembly(typeof(IMoviesService));
+            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .AssignableTo<BaseController>().PropertiesAutowired();
         }
     }
 }

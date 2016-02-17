@@ -57,6 +57,7 @@
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom{T}.cs" />
     <Compile Include="Mapping\IMapTo{T}.cs" />
+    <Compile Include="Mapping\QueryableExtentions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
