@@ -1,9 +1,11 @@
 ﻿namespace SciHub.Web
 {
+    using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
     using Autofac;
     using Autofac.Integration.Mvc;
+    using Data;
 
     public static class AutofacConfig
     {
@@ -37,6 +39,9 @@
 
         private static void RegisterServices(ContainerBuilder builder)
         {
+            builder.Register(x => new SciHubDbContext())
+                .As<DbContext>()
+                .InstancePerRequest();
         }
     }
 }
