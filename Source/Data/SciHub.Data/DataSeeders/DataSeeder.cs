@@ -1,4 +1,7 @@
-﻿namespace SciHub.Data.DataSeeders
+﻿using SciHub.Data.Models.Common;
+using SciHub.Data.Models.ShortStory;
+
+namespace SciHub.Data.DataSeeders
 {
     using System;
     using System.Collections.Generic;
@@ -176,6 +179,161 @@
             userManager.AddToRole(testFemaleUser.Id, UserRoleConstants.Default);
 
             context.SaveChanges();
+
+            var dark = new Tag
+            {
+                Name = "dark"
+            };
+
+            var funny = new Tag
+            {
+                Name = "funny"
+            };
+
+            var sad = new Tag
+            {
+                Name = "sad"
+            };
+
+            var ai = new Tag
+            {
+                Name = "ai"
+            };
+
+            var aliens = new Tag
+            {
+                Name = "aliens"
+            };
+
+            context.Tags.Add(dark);
+            context.Tags.Add(funny);
+            context.Tags.Add(sad);
+            context.Tags.Add(ai);
+            context.Tags.Add(aliens);
+
+            context.SaveChanges();
+
+
+            var firstStory = new ShortStory
+            {
+                Title = "The Dawning",
+                Content = @"Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Nulla quis lorem ut libero malesuada feugiat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
+
+                Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.Donec sollicitudin molestie malesuada.Curabitur arcu erat,
+                accumsan id imperdiet et,
+                porttitor at sem.Cras ultricies ligula sed magna dictum porta.Pellentesque in ipsum id orci porta dapibus.Praesent sapien massa,
+                convallis a pellentesque nec,
+                egestas non nisi.Praesent sapien massa,
+                convallis a pellentesque nec,
+                egestas non nisi.Nulla porttitor accumsan tincidunt.Pellentesque in ipsum id orci porta dapibus.Vivamus magna justo,
+                lacinia eget consectetur sed,
+                convallis at tellus.",
+
+                AuthorId = ada.Id,
+            };
+
+            var fistStoryRating = new ShortStoryRating
+            {
+                Value = 4,
+                ShortStoryId = firstStory.Id,
+                UserId = newton.Id
+            };
+
+            var firstStoryFirstComment = new ShortStoryComment
+            {
+                Content = "Very funny!",
+                ShortStoryId = firstStory.Id,
+                AuthorId = einstein.Id
+            };
+
+            var firstStorySecondComment = new ShortStoryComment
+            {
+                Content = "The main character was great.",
+                ShortStoryId = firstStory.Id,
+                AuthorId = turing.Id
+            };
+
+            firstStory.Ratings.Add(fistStoryRating);
+            firstStory.Comments.Add(firstStoryFirstComment);
+            firstStory.Comments.Add(firstStorySecondComment);
+            firstStory.Tags.Add(funny);
+            firstStory.Tags.Add(ai);
+
+            var secondStory = new ShortStory
+            {
+                Title = "He knows",
+                Content = @"Vivamus suscipit tortor eget felis porttitor volutpat. Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Nulla porttitor accumsan tincidunt. Donec rutrum congue leo eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat. Nulla quis lorem ut libero malesuada feugiat. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus. Donec rutrum congue leo eget malesuada.
+
+Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Donec rutrum congue leo eget malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Pellentesque in ipsum id orci porta dapibus. Nulla quis lorem ut libero malesuada feugiat. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta. Curabitur aliquet quam id dui posuere blandit. Cras ultricies ligula sed magna dictum porta.
+
+Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Sed porttitor lectus nibh. Donec rutrum congue leo eget malesuada. Donec sollicitudin molestie malesuada. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec rutrum congue leo eget malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.",
+
+                AuthorId = testFemaleUser.Id,
+            };
+
+
+            var secondStoryRating = new ShortStoryRating
+            {
+                Value = 5,
+                ShortStoryId = secondStory.Id,
+                UserId = einstein.Id
+            };
+            var secondStoryFirstComment = new ShortStoryComment
+            {
+                Content = "Intriguing!",
+                ShortStoryId = secondStory.Id,
+                AuthorId = ada.Id
+            };
+
+
+            secondStory.Ratings.Add(secondStoryRating);
+            secondStory.Comments.Add(secondStoryFirstComment);
+            secondStory.Tags.Add(dark);
+
+
+            var thirdStory = new ShortStory
+            {
+                Title = "Into maddness",
+                Content = @"Cras ultricies ligula sed magna dictum porta. Donec rutrum congue leo eget malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Curabitur aliquet quam id dui posuere blandit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Proin eget tortor risus. Vivamus suscipit tortor eget felis porttitor volutpat. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Cras ultricies ligula sed magna dictum porta. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                AuthorId = einstein.Id,
+            };
+
+
+            var thirdStoryFirstRating = new ShortStoryRating
+            {
+                Value = 3,
+                ShortStoryId = thirdStory.Id,
+                UserId = einstein.Id
+            };
+
+            var thirdStorySecondRating = new ShortStoryRating
+            {
+                Value = 5,
+                ShortStoryId = thirdStory.Id,
+                UserId = newton.Id
+            };
+
+            var thirdStoryComment = new ShortStoryComment
+            {
+                Content = "Great!",
+                ShortStoryId = thirdStory.Id,
+                AuthorId = testMaleUser.Id
+            };
+
+
+            thirdStory.Ratings.Add(thirdStoryFirstRating);
+            thirdStory.Ratings.Add(thirdStorySecondRating);
+            thirdStory.Comments.Add(thirdStoryComment);
+            thirdStory.Tags.Add(aliens);
+            thirdStory.Tags.Add(sad);
+
+
+
+            context.ShortStories.Add(firstStory);
+            context.ShortStories.Add(secondStory);
+            context.ShortStories.Add(thirdStory);
+            context.SaveChanges();
+
         }
     }
 }
