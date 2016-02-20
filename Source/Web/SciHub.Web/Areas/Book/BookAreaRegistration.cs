@@ -1,23 +1,24 @@
-﻿using System.Web.Mvc;
-
-namespace SciHub.Web.Areas.Book
+﻿namespace SciHub.Web.Areas.Book
 {
-    public class BookAreaRegistration : AreaRegistration 
+    using System.Web.Mvc;
+
+    public class BookAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Book";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Book_default",
                 "Book/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "SciHub.Web.Areas.Book.Controllers" }
             );
         }
     }

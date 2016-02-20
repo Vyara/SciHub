@@ -2,22 +2,23 @@
 
 namespace SciHub.Web.Areas.Movie
 {
-    public class MovieAreaRegistration : AreaRegistration 
+    public class MovieAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Movie";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Movie_default",
                 "Movie/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "SciHub.Web.Areas.Movie.Controllers" }
             );
         }
     }

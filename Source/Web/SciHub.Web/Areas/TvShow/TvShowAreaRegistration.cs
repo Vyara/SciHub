@@ -17,7 +17,8 @@ namespace SciHub.Web.Areas.TvShow
             context.MapRoute(
                 "TvShow_default",
                 "TvShow/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new[] { "SciHub.Web.Areas.TvShow.Controllers" }
             );
         }
     }
