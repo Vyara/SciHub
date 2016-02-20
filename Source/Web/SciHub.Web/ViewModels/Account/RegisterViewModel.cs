@@ -27,21 +27,19 @@ namespace SciHub.Web.ViewModels.Account
         [StringLength(UserModelConstants.LastNameMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = UserModelConstants.LastNameMinLength)]
         public string LastName { get; set; }
 
-        [Required]
+
         [Display(Name = "Avatar")]
         [RegularExpression(DataModelConstants.UrlValiadtion)]
         public string Avatar { get; set; }
 
-        [Required]
         [Display(Name = "Date of Birth")]
-        [RegularExpression(DataModelConstants.UrlValiadtion)]
         public DateTime? BirthDate { get; set; }
 
         [Required]
         [Display(Name = "Gender")]
         public Gender Gender { get; set; }
 
-        [Required]
+
         [Display(Name = "About")]
         [StringLength(UserModelConstants.AboutMaxLength, ErrorMessage = "The {0} must be at least {2} characters long.")]
         public string About { get; set; }

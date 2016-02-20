@@ -1,4 +1,7 @@
-﻿namespace SciHub.Web.Controllers
+﻿using SciHub.Common;
+using SciHub.Data.Models.Enumerators;
+
+namespace SciHub.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -147,6 +150,24 @@
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.UserName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Avatar = model.Avatar, Gender = model.Gender, About = model.About };
+                if (string.IsNullOrEmpty(user.Avatar) || string.IsNullOrWhiteSpace(user.Avatar))
+                {
+                    if (user.Gender == Gender.Female)
+                    {
+                        user.Avatar = UserDefaultPictureConstants.Female;
+                    }
+
+                    else if (user.Gender == Gender.Male)
+                    {
+                        user.Avatar = UserDefaultPictureConstants.Male;
+                    }
+
+                    else
+                    {
+                        user.Avatar = UserDefaultPictureConstants.Neutral;
+                    }
+       
+                }
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
