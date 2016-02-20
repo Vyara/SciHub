@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Controllers
+﻿using System.Web.Security;
+
+namespace SciHub.Web.Controllers
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -78,6 +80,7 @@
                                         : "";
 
             var userId = User.Identity.GetUserId();
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
