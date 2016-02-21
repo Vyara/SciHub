@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Controllers
+﻿using SciHub.Services.Web.Contracts;
+
+namespace SciHub.Web.Controllers
 {
     using System.Web.Mvc;
     using AutoMapper;

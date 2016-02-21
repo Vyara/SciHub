@@ -1,4 +1,6 @@
-﻿namespace SciHub.Data.DataSeeders
+﻿using SciHub.Common.Constants.Models;
+
+namespace SciHub.Data.DataSeeders
 {
     using System;
     using System.Linq;
@@ -436,6 +438,12 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
                     ImageFileExtention = "jpg"
                 }
             };
+
+            dune.Ratings.Add(new BookRating
+            {
+                Value = 4,
+                UserId = ada.Id,
+            });
 
             dune.Tags.Add(planet);
             dune.Tags.Add(space);

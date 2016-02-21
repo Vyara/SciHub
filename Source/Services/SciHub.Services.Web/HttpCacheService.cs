@@ -1,4 +1,6 @@
-﻿namespace SciHub.Services.Web
+﻿using SciHub.Services.Web.Contracts;
+
+namespace SciHub.Services.Web
 {
     using System;
     using System.Web;

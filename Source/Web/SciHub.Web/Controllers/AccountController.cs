@@ -1,4 +1,5 @@
 ﻿using SciHub.Common;
+using SciHub.Common.Constants.Models;
 using SciHub.Data.Models.Enumerators;
 
 namespace SciHub.Web.Controllers

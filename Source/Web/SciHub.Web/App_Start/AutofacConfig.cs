@@ -1,4 +1,7 @@
-﻿namespace SciHub.Web
+﻿using SciHub.Services.Web.Contracts;
+using IMoviesService = SciHub.Services.Data.Contracts.Movies.IMoviesService;
+
+namespace SciHub.Web
 {
     using System.Data.Entity;
     using System.Reflection;

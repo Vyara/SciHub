@@ -1,4 +1,4 @@
-﻿namespace SciHub.Common
+﻿namespace SciHub.Common.Constants.Models
 {
     public class UserDefaultPictureConstants
     {
