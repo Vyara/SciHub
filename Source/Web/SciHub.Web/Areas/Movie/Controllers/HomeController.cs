@@ -20,6 +20,7 @@
             this.movies = movies;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             // Todo: Cache

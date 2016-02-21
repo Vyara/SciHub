@@ -1,4 +1,4 @@
-﻿namespace SciHub.Web.Areas.Movie.ViewModels.Actors
+﻿namespace SciHub.Web.ViewModels.Actors
 {
     using AutoMapper;
     using Data.Models.Common;
@@ -6,6 +6,8 @@
 
     public class ActorNameViewModel : IMapFrom<Actor>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string FullName { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)

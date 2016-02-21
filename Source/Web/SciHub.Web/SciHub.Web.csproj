@@ -211,9 +211,11 @@
     <Compile Include="Areas\Movie\Controllers\HomeController.cs" />
     <Compile Include="Areas\Movie\Controllers\MoviesController.cs" />
     <Compile Include="Areas\Movie\MovieAreaRegistration.cs" />
-    <Compile Include="Areas\Movie\ViewModels\Actors\ActorNameViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Comments\MovieCommentViewModel.cs" />
+    <Compile Include="ViewModels\Actors\ActorNameViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\AllMoviesMovieViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MapBaseMovieViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\MovieDetailsViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MoviesPageableListViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\TopMovieIndexViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\TopMovieListViewModel.cs" />
@@ -240,6 +242,7 @@
     <Compile Include="ViewModels\Account\ForgotViewModel.cs" />
     <Compile Include="ViewModels\Account\LoginViewModel.cs" />
     <Compile Include="ViewModels\Account\ManageLoginsViewModel.cs" />
+    <Compile Include="ViewModels\Directors\DirectorViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
@@ -250,6 +253,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Home\UserInfoViewModel.cs" />
+    <Compile Include="ViewModels\Tags\TagViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -381,7 +385,6 @@
     <Folder Include="Areas\Admin\ViewModels\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Book\ViewModels\" />
-    <Folder Include="Areas\Movie\ViewModels\Coments\" />
     <Folder Include="Areas\ShortStory\ViewModels\" />
     <Folder Include="Areas\TvShow\ViewModels\" />
     <Folder Include="Areas\User\Controllers\" />

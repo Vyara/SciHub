@@ -20,6 +20,7 @@
             this.movies = movies;
         }
 
+        [HttpGet]
         public ActionResult Index(int id = 1, string order = "newest", string criteria = "")
         {
             // Todo: cache
@@ -42,14 +43,16 @@
             return this.View(viewModel);
         }
 
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var movie = this.movies.GetById(id);
+            var viewModel = this.Mapper.Map(movie, new MovieDetailsViewModel());
             if (movie == null)
             {
                 return this.Content("Movie with this id was not found");
             }
-            return this.View(movie);
+            return this.View(viewModel);
         }
 
         public ActionResult Rate()
