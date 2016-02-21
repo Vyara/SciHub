@@ -6,12 +6,32 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+    using SciHub.Common.Constants;
+    using SciHub.Services.Data.Contracts.Movies;
+    using SciHub.Web.Areas.Movie.ViewModels.Movies;
+    using SciHub.Web.Areas.TvShow.ViewModels.TvShows;
+    using SciHub.Web.Infrastructure.Mapping;
+
 
     public class HomeController : BaseController
     {
+        private readonly ITvShowsService shows;
+
+        public HomeController(ITvShowsService shows)
+        {
+            this.shows = shows;
+        }
+
         public ActionResult Index()
         {
-            return this.View();
+            // Todo: Cache
+            var topTvshows = this.shows.GetTop(WebConstants.NumberOfTopTvShowsForMoviesHomePage).To<TopTvShowIndexViewModel>().ToList();
+            var viewModel = new TopTvShowListViewModel
+            {
+                TvShows = topTvshows
+            };
+
+            return this.View(viewModel);
         }
     }
 }

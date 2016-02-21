@@ -215,6 +215,16 @@
     <Compile Include="Areas\Movie\ViewModels\Movies\MoviesByActorListViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MovieStudioViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Ratings\MovieRatingViewModel.cs" />
+    <Compile Include="Areas\TvShow\Controllers\TvShowsController.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\Comments\TvShowCommentViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\Ratings\TvShowRatingViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\TvShows\AllTvShowsTvShowViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\TvShows\TvShowDetailsViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\TvShows\TvShowsByActorListViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\TvShows\TvShowsPageableListViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\TvShows\TvShowChannelViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\TvShows\TopTvShowIndexViewModel.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\TvShows\TopTvShowListViewModel.cs" />
     <Compile Include="Areas\User\Controllers\UserController.cs" />
     <Compile Include="Areas\User\ViewModels\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\Actors\ActorNameViewModel.cs" />
@@ -327,7 +337,6 @@
     <Content Include="Areas\Book\Views\Home\Index.cshtml" />
     <Content Include="Areas\TvShow\Views\_ViewStart.cshtml" />
     <Content Include="Areas\TvShow\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\TvShow\Views\Home\Index.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\Index.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\Rate.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\Details.cshtml" />
@@ -337,6 +346,14 @@
     <Content Include="Areas\Movie\Views\Movies\MoviesByTag.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\MoviesByDirector.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\MoviesByStudio.cshtml" />
+    <Content Include="Areas\TvShow\Views\TvShows\_RateOptions.cshtml" />
+    <Content Include="Areas\TvShow\Views\TvShows\Details.cshtml" />
+    <Content Include="Areas\TvShow\Views\TvShows\Index.cshtml" />
+    <Content Include="Areas\TvShow\Views\TvShows\TvShowsByActor.cshtml" />
+    <Content Include="Areas\TvShow\Views\TvShows\TvshowsByChannel.cshtml" />
+    <Content Include="Areas\TvShow\Views\TvShows\TvShowsByTag.cshtml" />
+    <Content Include="Areas\TvShow\Views\TvShows\Rate.cshtml" />
+    <Content Include="Areas\TvShow\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -397,7 +414,6 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Book\ViewModels\" />
     <Folder Include="Areas\ShortStory\ViewModels\" />
-    <Folder Include="Areas\TvShow\ViewModels\" />
     <Folder Include="Areas\User\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

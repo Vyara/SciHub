@@ -1,0 +1,117 @@
+﻿@model SciHub.Web.Areas.TvShow.ViewModels.TvShows.TvShowsPageableListViewModel
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>All</h2>
+
+<table>
+    <tr>
+        <td>
+            @using (Html.BeginForm("Index", "TvShows", FormMethod.Get))
+            {
+                <input type="hidden" name="order" value="top" />
+                <input type="submit" class="btn btn-default" value="Top rated" />
+            }
+
+            @using (Html.BeginForm("Index", "TvShows", FormMethod.Get))
+            {
+                <input type="hidden" name="order" value="newest" />
+                <input type="submit" class="btn btn-default" value="Newest" />
+            }
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @using (Html.BeginForm("Index", "TvShows", FormMethod.Get))
+            {
+                <input type="text" class="form-control" name="criteria" placeholder="SearchBox" />
+                <input type="submit" value="Search" />
+            }
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+
+<div id="holder"></div>
+
+@foreach (var show in this.Model.TvShows)
+{
+    <div class="row well">
+        <h3>@show.Title</h3>
+
+        @if (@show.EndYear == null)
+        {
+            <p>(@show.StartYear -  )</p>
+        }
+
+        else
+        {
+            <p>(@show.StartYear - @show.EndYear )</p>
+        }
+        <div class="col-md-4">
+            <img src="data:image;base64,@Convert.ToBase64String(show.Poster.Image)" style="width: 50%" alt="@show.Title Poster" />
+        </div>
+        <strong>Cast: </strong>
+        <p>@show.LeadActor</p>
+        <p>@show.SupportActor</p>
+        <p>Rating: @show.RatingsCount</p>
+        <p>
+            @show.Summary.Substring(0, Math.Min(show.Summary.Length, 100))
+            @if (@show.Summary.Length >= 100)
+                {
+                <a>...</a>
+            }
+        </p>
+        @if (@show.CommentsCount == 1)
+        {
+            <p>@show.CommentsCount Comment</p>
+        }
+
+        else
+        {
+            <p>@show.CommentsCount Comments</p>
+        }
+
+        <div class="col-md-6">
+            @Html.ActionLink("Details", "Details", "TvShows", new { id = show.Id }, null)
+        </div>
+    </div>
+
+}
+<nav>
+    <ul class="pagination">
+        @if (Model.CurrentPage != 1)
+        {
+            <li>
+                <a href="/Movie/Movies/Index/@(Model.CurrentPage - 1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i < Model.TotalPages; i++)
+        {
+            var className = string.Empty;
+            if (Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+            <li class="@className"><a href="/Movie/Movies/Index/@i">@i</a></li>
+        }
+        @if (Model.CurrentPage != Model.TotalPages)
+        {
+            <li>
+                <a href="/Movie/Movies/Index/@(Model.CurrentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+
+    </ul>
+</nav>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
