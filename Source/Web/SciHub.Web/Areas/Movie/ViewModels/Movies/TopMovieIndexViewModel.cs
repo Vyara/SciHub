@@ -17,6 +17,8 @@
 
         public string SupportActor { get; set; }
 
+        public MoviePoster Poster { get; set; }
+
         public float RatingsCount { get; set; }
 
         public int CommentsCount { get; set; }

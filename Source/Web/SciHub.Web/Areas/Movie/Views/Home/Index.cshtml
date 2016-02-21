@@ -8,8 +8,25 @@
 @foreach (var movie in Model.Movies)
 {
     @Html.DisplayForModel(movie.Title);
-    <p>@movie.Title</p>
-    <p>Rating: @movie.RatingsCount</p>
-    <p>@movie.LeadActor</p>
-    <p>@movie.SupportActor</p>
+    <div class="row well">
+        <h3>@movie.Title</h3>
+        <p>(@movie.Year)</p>
+        <div class="col-md-4">
+            <img src="data:image;base64,@Convert.ToBase64String(movie.Poster.Image)" style="width: 50%" alt="@movie.Title Poster" />
+        </div>
+        <strong>Cast: </strong>
+        <p>@movie.LeadActor</p>
+        <p>@movie.SupportActor</p>
+        <p>Rating: @movie.RatingsCount</p>
+        @if (@movie.CommentsCount == 1)
+        {
+            <p>@movie.CommentsCount Comment</p>
+        }
+
+        else
+        {
+          <p>@movie.CommentsCount Comments</p>
+        }
+
+    </div>
 }

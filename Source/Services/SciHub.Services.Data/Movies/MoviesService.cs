@@ -17,7 +17,7 @@
         public IQueryable<Movie> GetTop(int count)
         {
             var ideas = this.movies.All()
-                .OrderBy(m => (m.Ratings.Sum(r => r.Value) / m.Ratings.Count()))
+                .OrderByDescending(m => (m.Ratings.Sum(r => r.Value) / m.Ratings.Count()))
                 .ThenBy(m => m.CreatedOn)
                 .Take(count);
             return ideas;
