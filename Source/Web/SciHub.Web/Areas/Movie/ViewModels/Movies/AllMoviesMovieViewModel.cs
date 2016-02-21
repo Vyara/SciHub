@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using SciHub.Web.Infrastructure.Mapping;
-using SciHub.Web.ViewModels.Actors;
-
-namespace SciHub.Web.Areas.Movie.ViewModels.Movies
+﻿namespace SciHub.Web.Areas.Movie.ViewModels.Movies
 {
+    using System.Linq;
     using System.Collections.Generic;
     using AutoMapper;
     using Data.Models.Movie;
+    using Infrastructure.Mapping;
+    using Web.ViewModels.Actors;
 
     public class AllMoviesMovieViewModel : IMapFrom<Movie>, IHaveCustomMappings
     {

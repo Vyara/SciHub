@@ -212,6 +212,9 @@
     <Compile Include="Areas\Movie\Controllers\MoviesController.cs" />
     <Compile Include="Areas\Movie\MovieAreaRegistration.cs" />
     <Compile Include="Areas\Movie\ViewModels\Comments\MovieCommentViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Ratings\MovieRatingViewModel.cs" />
+    <Compile Include="Areas\User\Controllers\UserController.cs" />
+    <Compile Include="Areas\User\ViewModels\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\Actors\ActorNameViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\AllMoviesMovieViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MapBaseMovieViewModel.cs" />
@@ -326,6 +329,8 @@
     <Content Include="Areas\Movie\Views\Movies\Index.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\Rate.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\Details.cshtml" />
+    <Content Include="Areas\Movie\Views\Movies\_RateOptions.cshtml" />
+    <Content Include="Areas\User\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -387,8 +392,6 @@
     <Folder Include="Areas\Book\ViewModels\" />
     <Folder Include="Areas\ShortStory\ViewModels\" />
     <Folder Include="Areas\TvShow\ViewModels\" />
-    <Folder Include="Areas\User\Controllers\" />
-    <Folder Include="Areas\User\ViewModels\" />
     <Folder Include="Areas\User\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

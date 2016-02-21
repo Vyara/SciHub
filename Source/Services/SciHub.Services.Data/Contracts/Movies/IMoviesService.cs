@@ -15,5 +15,7 @@ namespace SciHub.Services.Data.Contracts.Movies
 
         Movie GetById(int id);
 
+        void Rate(int movieId, float value, string userId);
+
     }
 }

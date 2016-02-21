@@ -1,4 +1,5 @@
-﻿@model SciHub.Web.Areas.Movie.ViewModels.Movies.MovieDetailsViewModel
+﻿@using SciHub.Web.Areas.Movie.ViewModels.Ratings
+@model SciHub.Web.Areas.Movie.ViewModels.Movies.MovieDetailsViewModel
 @{
     ViewBag.Title = "Details";
 }
@@ -25,14 +26,16 @@
         <h4>Summary:</h4>
         <p>@Model.Summary</p>
 
-        <h4>Rating: @Model.RatingsCount</h4>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span id="current-rating">@string.Format("{0}", Model.RatingsCount) </span>
+
         @if (Request.IsAuthenticated)
         {
             <div>
                 @Ajax.ActionLink("Rate", "Rate", "Movies", new { id = Model.Id },
             new AjaxOptions
             {
-                UpdateTargetId = "holder",
+                UpdateTargetId = "current-rating",
                 HttpMethod = "GET",
                 InsertionMode = InsertionMode.Replace
             }, new { @class = "btn btn-info" })

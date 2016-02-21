@@ -7,7 +7,7 @@
     using Models;
 
     public class DbRepository<T> : IDbRepository<T>
-          where T : BaseModel<int>
+        where T : class, IDeletableEntity, IAuditInfo
     {
         public DbRepository(DbContext context)
         {
@@ -34,9 +34,10 @@
             return this.DbSet.AsQueryable();
         }
 
-        public T GetById(int id)
+        public T GetById(object id)
         {
-            return this.All().FirstOrDefault(x => x.Id == id);
+            var entity = this.DbSet.Find(id);
+            return entity?.IsDeleted == false ? entity : null;
         }
 
         public void Add(T entity)

@@ -1,11 +1,11 @@
-﻿using System;
-using SciHub.Services.Data.DataTransferObjects;
-
-namespace SciHub.Services.Data.Movies
+﻿namespace SciHub.Services.Data.Movies
 {
+    using System;
+
     using System.Linq;
     using SciHub.Data.Common.Repositories;
     using Contracts.Movies;
+    using DataTransferObjects;
     using SciHub.Data.Models.Movie;
 
     public class MoviesService : IMoviesService
@@ -66,6 +66,22 @@ namespace SciHub.Services.Data.Movies
             };
 
             return dto;
+        }
+
+        public void Rate(int movieId, float value, string userId)
+        {
+            var movie = this.movies.GetById(movieId);
+
+            if (movie != null)
+            {
+                movie.Ratings.Add(new MovieRating()
+                {
+                    Value = value,
+                    UserId = userId
+                });
+            }
+
+            this.movies.SaveChanges();
         }
 
         public Movie GetById(int id)

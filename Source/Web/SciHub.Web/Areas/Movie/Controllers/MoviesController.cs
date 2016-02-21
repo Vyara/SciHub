@@ -1,4 +1,7 @@
-﻿namespace SciHub.Web.Areas.Movie.Controllers
+﻿using System.Web.Security;
+using Microsoft.AspNet.Identity;
+
+namespace SciHub.Web.Areas.Movie.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -55,8 +58,26 @@
             return this.View(viewModel);
         }
 
-        public ActionResult Rate()
+        [HttpGet]
+        public ActionResult Rate(int id)
         {
+            return this.PartialView("_RateOptions", id);
+        }
+
+        [HttpPost]
+        public ActionResult Rate(int id, float value)
+        {
+            if (value > 5)
+            {
+                value = 5;
+            }
+
+            if (value < 1)
+            {
+                value = 1;
+            }
+
+           this.movies.Rate(id, value, this.User.Identity.GetUserId());
             return this.View();
         }
     }
