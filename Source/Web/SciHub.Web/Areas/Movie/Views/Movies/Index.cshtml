@@ -49,15 +49,6 @@
         <p>@movie.LeadActor</p>
         <p>@movie.SupportActor</p>
         <p>Rating: @movie.RatingsCount</p>
-        <div>
-            @Ajax.ActionLink("Rate", "Rate", "Movies", new { id = movie.Id },
-                    new AjaxOptions
-                    {
-                        UpdateTargetId = "holder",
-                        HttpMethod = "GET",
-                        InsertionMode = InsertionMode.Replace
-                    }, new { @class = "btn btn-primary" })
-        </div>
         <p>
             @movie.Summary.Substring(0, Math.Min(movie.Summary.Length, 100))
             @if (@movie.Summary.Length >= 100)

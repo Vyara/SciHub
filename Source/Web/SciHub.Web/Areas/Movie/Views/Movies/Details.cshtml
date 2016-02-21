@@ -3,10 +3,84 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.ActionLink("Back To The Movies", "Index", "Movies")</h2>
 
 <div class="row well">
-    <div class="col-lg-10">
-        <img src="data:image;base64,@Convert.ToBase64String(@Model.Poster.Image)" style="width: 50%" alt="@Model.Title Poster" />
+    <div class="col-lg-5">
+        <img src="data:image;base64,@Convert.ToBase64String(@Model.Poster.Image)" style="width: 100%" alt="@Model.Title Poster" />
     </div>
+    <div class="col-lg-7">
+        <h2>@Model.Title</h2>
+        <h5>(@Model.Year)</h5>
+        <br />
+        <h4>Director:</h4>
+        <p>@Model.Director</p>
+        <h4>Studio:</h4>
+        <p>@Model.Studio</p>
+        <h4>Cast:</h4>
+        @foreach (var actor in Model.Actors)
+        {
+            <p> @Html.ActionLink(@actor.FullName, "Details", "Movies", new { id = @actor.Id }, new { area = "Movie" })</p>
+        }
+        <h4>Summary:</h4>
+        <p>@Model.Summary</p>
+
+        <h4>Rating: @Model.RatingsCount</h4>
+        @if (Request.IsAuthenticated)
+        {
+            <div>
+                @Ajax.ActionLink("Rate", "Rate", "Movies", new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "holder",
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace
+            }, new { @class = "btn btn-info" })
+            </div>
+        }
+        @if (@Model.CommentsCount == 1)
+        {
+            <h4>@Model.CommentsCount Comment</h4>
+        }
+
+        else
+        {
+            <h4>@Model.CommentsCount Comments</h4>
+        }
+
+        @foreach (var tag in Model.Tags)
+        {
+            <span>@Html.ActionLink("#" + @tag.Name, "Details", "Movies", new { id = @tag.Id }, new { area = "Movie" })</span>
+        }
+    </div>
+
+
+
 </div>
+@if (Request.IsAuthenticated)
+{
+    <div>
+        @Ajax.ActionLink("Add a Comment", "Rate", "Movies", new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "holder",
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace
+            }, new { @class = "btn btn-info" })
+    </div>
+}
+@foreach (var comment in Model.Comments)
+{
+    <div class="row well-sm">
+        <div class="well-sm">
+            @comment.Content
+        </div>
+        <p>Posted on: @comment.CreatedOn, By: @comment.Author </p>
+    </div>
+}
+
+
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
