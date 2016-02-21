@@ -1,0 +1,23 @@
+﻿@model SciHub.Web.Areas.Movie.ViewModels.Movies.MoviesByActorListViewModel
+@{
+    ViewBag.Title = "MoviesByActor";
+}
+
+<h2>MoviesByActor</h2>
+
+@Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer })
+@foreach (var movie in Model.Movies)
+{
+
+    <div class="row well">
+        <h3>@movie.Title</h3>
+        <p>(@movie.Year)</p>
+        <div class="col-md-4">
+            <img src="data:image;base64,@Convert.ToBase64String(movie.Poster.Image)" style="width: 50%" alt="@movie.Title Poster" />
+        </div>
+        <div class="col-md-6">
+            @Html.ActionLink("Details", "Details", "Movies", new { id = movie.Id }, new { area = "Movie" })
+        </div>
+
+    </div>
+}

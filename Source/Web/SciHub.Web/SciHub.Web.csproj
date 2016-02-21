@@ -212,6 +212,8 @@
     <Compile Include="Areas\Movie\Controllers\MoviesController.cs" />
     <Compile Include="Areas\Movie\MovieAreaRegistration.cs" />
     <Compile Include="Areas\Movie\ViewModels\Comments\MovieCommentViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\MoviesByActorListViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\MovieStudioViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Ratings\MovieRatingViewModel.cs" />
     <Compile Include="Areas\User\Controllers\UserController.cs" />
     <Compile Include="Areas\User\ViewModels\UserDetailsViewModel.cs" />
@@ -331,6 +333,10 @@
     <Content Include="Areas\Movie\Views\Movies\Details.cshtml" />
     <Content Include="Areas\Movie\Views\Movies\_RateOptions.cshtml" />
     <Content Include="Areas\User\Views\User\Index.cshtml" />
+    <Content Include="Areas\Movie\Views\Movies\MoviesByActor.cshtml" />
+    <Content Include="Areas\Movie\Views\Movies\MoviesByTag.cshtml" />
+    <Content Include="Areas\Movie\Views\Movies\MoviesByDirector.cshtml" />
+    <Content Include="Areas\Movie\Views\Movies\MoviesByStudio.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

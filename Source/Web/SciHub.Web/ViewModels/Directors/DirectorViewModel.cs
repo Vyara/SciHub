@@ -16,7 +16,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Actor, DirectorViewModel>()
+            configuration.CreateMap<Director, DirectorViewModel>()
                 .ForMember(x => x.FullName, opt => opt.MapFrom(x => x.FirstName + " " + x.LastName));
         }
     }

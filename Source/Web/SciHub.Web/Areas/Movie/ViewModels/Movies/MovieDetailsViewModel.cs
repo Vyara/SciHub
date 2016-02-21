@@ -9,6 +9,7 @@
     using Data.Models.Movie;
     using Infrastructure.Mapping;
     using Web.ViewModels.Actors;
+    using SciHub.Web.ViewModels.Directors;
     using SciHub.Web.ViewModels.Tags;
 
     public class MovieDetailsViewModel : IMapFrom<Movie>, IHaveCustomMappings
@@ -27,9 +28,9 @@
 
         public int CommentsCount { get; set; }
 
-        public string Director { get; set; }
+        public DirectorViewModel Director { get; set; }
 
-        public string Studio { get; set; }
+        public MovieStudioViewModel Studio { get; set; }
 
         public IEnumerable<ActorNameViewModel> Actors { get; set; }
 
@@ -40,10 +41,8 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Movie, MovieDetailsViewModel>()
-                .ForMember(x => x.RatingsCount, opt => opt.MapFrom(x => x.Ratings.Sum(v => v.Value) / x.Ratings.Count()))
-                .ForMember(x => x.CommentsCount, opt => opt.MapFrom(x => x.Comments.Count))
-                .ForMember(x => x.Director, opt => opt.MapFrom(x => x.Director.FirstName + " " + x.Director.LastName))
-                .ForMember(x => x.Studio, opt => opt.MapFrom(x => x.Studio.Name));
+                .ForMember(x => x.RatingsCount, opt => opt.MapFrom(x => x.Ratings.Sum(v => v.Value)/x.Ratings.Count()))
+                .ForMember(x => x.CommentsCount, opt => opt.MapFrom(x => x.Comments.Count));
         }
     }
 }

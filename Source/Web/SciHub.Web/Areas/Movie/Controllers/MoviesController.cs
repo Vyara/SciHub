@@ -1,7 +1,4 @@
-﻿using System.Web.Security;
-using Microsoft.AspNet.Identity;
-
-namespace SciHub.Web.Areas.Movie.Controllers
+﻿namespace SciHub.Web.Areas.Movie.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +7,7 @@ namespace SciHub.Web.Areas.Movie.Controllers
     using System.Web.Mvc;
     using Common.Constants;
     using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
     using Services.Data.Contracts.Movies;
     using ViewModels.Movies;
     using Web.Controllers;
@@ -79,6 +77,66 @@ namespace SciHub.Web.Areas.Movie.Controllers
 
            this.movies.Rate(id, value, this.User.Identity.GetUserId());
             return this.View();
+        }
+
+        [HttpGet]
+        public ActionResult MoviesByActor(int id)
+        {
+            // Todo: Cache
+  
+            var topMovies = this.movies.GetActorMovies(id).ToList();
+
+            var viewModel = new MoviesByActorListViewModel
+            {
+                Movies = topMovies
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult MoviesByTag(int id)
+        {
+            // Todo: Cache
+
+            var topMovies = this.movies.GetTagMovies(id).ToList();
+
+            var viewModel = new MoviesByActorListViewModel
+            {
+                Movies = topMovies
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult MoviesByDirector(int id)
+        {
+            // Todo: Cache
+
+            var topMovies = this.movies.GetDirectorMovies(id).ToList();
+
+            var viewModel = new MoviesByActorListViewModel
+            {
+                Movies = topMovies
+            };
+
+            return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult MoviesByStudio(int id)
+        {
+            // Todo: Cache
+
+            var topMovies = this.movies.GetStudioMovies(id).ToList();
+
+            var viewModel = new MoviesByActorListViewModel
+            {
+                Movies = topMovies
+            };
+
+            return this.View(viewModel);
         }
     }
 }

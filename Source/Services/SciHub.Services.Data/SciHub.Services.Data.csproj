@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorsService.cs" />
+    <Compile Include="Contracts\IActorsService.cs" />
     <Compile Include="Contracts\Movies\IMoviesService.cs" />
     <Compile Include="DataTransferObjects\PagedMoviesDto.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
