@@ -1,7 +1,15 @@
-﻿
+﻿@model SciHub.Web.Areas.Movie.ViewModels.Movies.TopMovieListViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2> Movie Index</h2>
+<h2> Top Movies</h2>
 
+@foreach (var movie in Model.Movies)
+{
+    @Html.DisplayForModel(movie.Title);
+    <p>@movie.Title</p>
+    <p>Rating: @movie.RatingsCount</p>
+    <p>@movie.LeadActor</p>
+    <p>@movie.SupportActor</p>
+}

@@ -7,9 +7,9 @@
 
     public class MoviesService : IMoviesService
     {
-        private readonly IDbRepository<SciHub.Data.Models.Movie.Movie> movies;
+        private readonly IDbRepository<Movie> movies;
 
-        public MoviesService(IDbRepository<SciHub.Data.Models.Movie.Movie> movies)
+        public MoviesService(IDbRepository<Movie> movies)
         {
             this.movies = movies;
         }
@@ -17,7 +17,7 @@
         public IQueryable<Movie> GetTop(int count)
         {
             var ideas = this.movies.All()
-                .OrderBy(m => m.Ratings.Sum(r => r.Value))
+                .OrderBy(m => (m.Ratings.Sum(r => r.Value) / m.Ratings.Count()))
                 .ThenBy(m => m.CreatedOn)
                 .Take(count);
             return ideas;

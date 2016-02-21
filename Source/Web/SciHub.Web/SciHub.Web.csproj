@@ -210,6 +210,10 @@
     <Compile Include="Areas\Book\Controllers\HomeController.cs" />
     <Compile Include="Areas\Movie\Controllers\HomeController.cs" />
     <Compile Include="Areas\Movie\MovieAreaRegistration.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\AllMoviesMovieViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\MoviesPageableListViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\TopMovieIndexViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\TopMovieListViewModel.cs" />
     <Compile Include="Areas\ShortStory\Controllers\HomeController.cs" />
     <Compile Include="Areas\ShortStory\ShortStoryAreaRegistration.cs" />
     <Compile Include="Areas\TvShow\Controllers\HomeController.cs" />
@@ -371,14 +375,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\ViewModels\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Book\Models\" />
-    <Folder Include="Areas\Movie\Models\" />
-    <Folder Include="Areas\ShortStory\Models\" />
-    <Folder Include="Areas\TvShow\Models\" />
+    <Folder Include="Areas\Book\ViewModels\" />
+    <Folder Include="Areas\Movie\ViewModels\Coments\" />
+    <Folder Include="Areas\ShortStory\ViewModels\" />
+    <Folder Include="Areas\TvShow\ViewModels\" />
     <Folder Include="Areas\User\Controllers\" />
-    <Folder Include="Areas\User\Models\" />
+    <Folder Include="Areas\User\ViewModels\" />
     <Folder Include="Areas\User\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
