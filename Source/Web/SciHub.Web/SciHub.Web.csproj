@@ -48,8 +48,8 @@
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -209,8 +209,11 @@
     <Compile Include="Areas\Book\BookAreaRegistration.cs" />
     <Compile Include="Areas\Book\Controllers\HomeController.cs" />
     <Compile Include="Areas\Movie\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Movie\Controllers\MoviesController.cs" />
     <Compile Include="Areas\Movie\MovieAreaRegistration.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Actors\ActorNameViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\AllMoviesMovieViewModel.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Movies\MapBaseMovieViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MoviesPageableListViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\TopMovieIndexViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\TopMovieListViewModel.cs" />
@@ -316,10 +319,9 @@
     <Content Include="Areas\TvShow\Views\_ViewStart.cshtml" />
     <Content Include="Areas\TvShow\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\TvShow\Views\Home\Index.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Areas\Movie\Views\Movies\Index.cshtml" />
+    <Content Include="Areas\Movie\Views\Movies\Rate.cshtml" />
+    <Content Include="Areas\Movie\Views\Movies\Details.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -328,11 +330,12 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />

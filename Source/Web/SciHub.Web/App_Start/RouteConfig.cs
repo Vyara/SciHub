@@ -1,8 +1,8 @@
-﻿using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace SciHub.Web
+﻿namespace SciHub.Web
 {
+    using System.Web.Mvc;
+    using System.Web.Routing;
+
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
@@ -10,10 +10,10 @@ namespace SciHub.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                   "Default", 
+                   "Default",
                    "{controller}/{action}/{id}",
                    new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                     new [] { "SciHub.Web.Controllers" });
+                     new[] { "SciHub.Web.Controllers" });
         }
     }
 }

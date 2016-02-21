@@ -18,8 +18,7 @@ namespace SciHub.Web.Areas.Movie
                 "Movie_default",
                 "Movie/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "SciHub.Web.Areas.Movie.Controllers" }
-            );
+                new[] { "SciHub.Web.Areas.Movie.Controllers" });
         }
     }
 }

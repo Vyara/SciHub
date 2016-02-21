@@ -18,8 +18,7 @@ namespace SciHub.Web.Areas.ShortStory
                 "ShortStory_default",
                 "ShortStory/{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new[] { "SciHub.Web.Areas.ShortStory.Controllers" }
-            );
+                new[] { "SciHub.Web.Areas.ShortStory.Controllers" });
         }
     }
 }

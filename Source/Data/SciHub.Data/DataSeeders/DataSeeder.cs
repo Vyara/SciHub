@@ -682,7 +682,7 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
 
             context.SaveChanges();
 
-            //Directors
+            // Directors
 
             var ridley = new Director
             {
@@ -1060,7 +1060,7 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
 
             context.SaveChanges();
 
-            //Channels
+            // Channels
 
             var foxTv = new TvShowChannel
             {
@@ -1083,7 +1083,7 @@ Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur non
 
             context.SaveChanges();
 
-            //TvShows
+            // TvShows
             var firefly = new TvShow
             {
                 Title = "Firefly",

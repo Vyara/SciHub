@@ -1,4 +1,7 @@
-﻿namespace SciHub.Services.Data.Movies
+﻿using System;
+using SciHub.Services.Data.DataTransferObjects;
+
+namespace SciHub.Services.Data.Movies
 {
     using System.Linq;
     using SciHub.Data.Common.Repositories;
@@ -29,6 +32,41 @@
                 .OrderByDescending(m => m.CreatedOn);
         }
 
+        public PagedMoviesDto GetAllWithPaging(int page, int itemsPerPage, string order, string criteria)
+        {
+            var allItemsCount = this.movies.All().Count();
+            var totalPages = (int)Math.Ceiling(allItemsCount / (decimal)itemsPerPage);
+            var itemsToSkip = (page - 1) * itemsPerPage;
+
+            var allMovies = this.movies.All();
+
+            if (!string.IsNullOrEmpty(criteria))
+            {
+                allMovies = allMovies.Where(x => x.Title.Contains(criteria) || x.Summary.Contains(criteria));
+            }
+
+            if (order == "newest")
+            {
+                allMovies = allMovies.OrderByDescending(x => x.CreatedOn);
+            }
+            else if (order == "top")
+            {
+                allMovies = allMovies.OrderByDescending(m => ((float)m.Ratings.Sum(r => r.Value) / m.Ratings.Count()));
+            }
+
+            allMovies = allMovies
+                     .Skip(itemsToSkip)
+                     .Take(itemsPerPage);
+
+            var dto = new PagedMoviesDto
+            {
+                AllItemsCount = allItemsCount,
+                Movies = allMovies,
+                TotalPages = totalPages
+            };
+
+            return dto;
+        }
 
         public Movie GetById(int id)
         {

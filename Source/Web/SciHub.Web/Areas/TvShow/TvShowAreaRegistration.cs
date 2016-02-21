@@ -18,8 +18,7 @@ namespace SciHub.Web.Areas.TvShow
                 "TvShow_default",
                 "TvShow/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "SciHub.Web.Areas.TvShow.Controllers" }
-            );
+                new[] { "SciHub.Web.Areas.TvShow.Controllers" });
         }
     }
 }

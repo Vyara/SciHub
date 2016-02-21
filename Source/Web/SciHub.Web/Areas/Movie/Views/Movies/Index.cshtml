@@ -1,0 +1,113 @@
+﻿@model SciHub.Web.Areas.Movie.ViewModels.Movies.MoviesPageableListViewModel
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>All</h2>
+
+<table>
+    <tr>
+        <td>
+            @using (Html.BeginForm("Index", "Movies", FormMethod.Get))
+            {
+                <input type="hidden" name="order" value="top" />
+                <input type="submit" class="btn btn-default" value="Top rated" />
+            }
+
+            @using (Html.BeginForm("Index", "Movies", FormMethod.Get))
+            {
+                <input type="hidden" name="order" value="newest" />
+                <input type="submit" class="btn btn-default" value="Newest" />
+            }
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @using (Html.BeginForm("Index", "Movies", FormMethod.Get))
+            {
+                <input type="text" class="form-control" name="criteria" placeholder="SearchBox" />
+                <input type="submit" value="Search" />
+            }
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+
+<div id="holder"></div>
+
+    @foreach (var movie in this.Model.Movies)
+    {
+        <div class="row well">
+            <h3>@movie.Title</h3>
+            <p>(@movie.Year)</p>
+            <div class="col-md-4">
+                <img src="data:image;base64,@Convert.ToBase64String(movie.Poster.Image)" style="width: 50%" alt="@movie.Title Poster"/>
+            </div>
+            <strong>Cast: </strong>
+            <p>@movie.LeadActor</p>
+            <p>@movie.SupportActor</p>
+            <p>Rating: @movie.RatingsCount</p>
+            <div>
+                @Ajax.ActionLink("Rate", "Rate", "Movies", new {id = movie.Id},
+                    new AjaxOptions
+                    {
+                        UpdateTargetId = "holder",
+                        HttpMethod = "GET",
+                        InsertionMode = InsertionMode.Replace
+                    }, new {@class = "btn btn-primary"})
+            </div>
+            <p>
+                @movie.Summary.Substring(0, Math.Min(movie.Summary.Length, 100))
+                @if (@movie.Summary.Length >= 100)
+                {
+                    <a>...</a>
+                }
+            </p>
+            @if (@movie.CommentsCount == 1)
+            {
+                <p>@movie.CommentsCount Comment</p>
+            }
+
+            else
+            {
+                <p>@movie.CommentsCount Comments</p>
+            }
+
+        </div>
+    } 
+<nav>
+    <ul class="pagination">
+        @if (Model.CurrentPage != 1)
+        {
+            <li>
+                <a href="/Movie/Movies/Index/@(Model.CurrentPage - 1)" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+        @for (int i = 1; i < Model.TotalPages; i++)
+        {
+            var className = string.Empty;
+            if (Model.CurrentPage == i)
+            {
+                className = "active";
+            }
+            <li class="@className"><a href="/Movie/Movies/Index/@i">@i</a></li>
+        }
+        @if (Model.CurrentPage != Model.TotalPages)
+        {
+            <li>
+                <a href="/Movie/Movies/Index/@(Model.CurrentPage + 1)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+
+    </ul>
+</nav>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}

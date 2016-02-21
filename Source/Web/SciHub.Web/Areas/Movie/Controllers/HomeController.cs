@@ -11,8 +11,6 @@
     using SciHub.Services.Data.Contracts.Movies;
     using SciHub.Web.Areas.Movie.ViewModels.Movies;
 
-
-
     public class HomeController : BaseController
     {
         private readonly IMoviesService movies;
@@ -24,7 +22,7 @@
 
         public ActionResult Index()
         {
-            //Todo: Cache
+            // Todo: Cache
             var topMovies = this.movies.GetTop(WebConstants.NumberOfTopMoviesForMoviesHomePage).To<TopMovieIndexViewModel>().ToList();
             var viewModel = new TopMovieListViewModel
             {

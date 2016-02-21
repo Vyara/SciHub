@@ -18,8 +18,7 @@
                 "Book_default",
                 "Book/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "SciHub.Web.Areas.Book.Controllers" }
-            );
+                new[] { "SciHub.Web.Areas.Book.Controllers" });
         }
     }
 }

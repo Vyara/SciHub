@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace SciHub.Data.Models.Movie
+﻿namespace SciHub.Data.Models.Movie
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

@@ -8,6 +8,8 @@
 
         public int TotalPages { get; set; }
 
+        public int AllItemsCount { get; set; }
+
         public IEnumerable<AllMoviesMovieViewModel> Movies { get; set; }
     }
 }

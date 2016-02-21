@@ -1,4 +1,6 @@
-﻿namespace SciHub.Services.Data.Contracts.Movies
+﻿using SciHub.Services.Data.DataTransferObjects;
+
+namespace SciHub.Services.Data.Contracts.Movies
 {
     using System.Linq;
     using SciHub.Data.Models.Movie;
@@ -8,6 +10,8 @@
         IQueryable<Movie> GetTop(int count);
 
         IQueryable<Movie> GetAll();
+
+        PagedMoviesDto GetAllWithPaging(int page, int itemsPerPage, string order, string criteria);
 
         Movie GetById(int id);
 

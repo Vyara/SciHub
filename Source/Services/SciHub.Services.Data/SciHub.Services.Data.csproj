@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\Movies\IMoviesService.cs" />
+    <Compile Include="DataTransferObjects\PagedMoviesDto.cs" />
     <Compile Include="Movies\MoviesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
