@@ -1,6 +1,4 @@
-﻿using SciHub.Common.Constants.Models;
-
-namespace SciHub.Data.DataSeeders
+﻿namespace SciHub.Data.DataSeeders
 {
     using System;
     using System.Linq;
@@ -9,6 +7,7 @@ namespace SciHub.Data.DataSeeders
     using Microsoft.AspNet.Identity.EntityFramework;
     using SciHub.Common;
     using SciHub.Common.Constants;
+    using SciHub.Common.Constants.Models;
     using Models;
     using Models.Book;
     using Models.Common;

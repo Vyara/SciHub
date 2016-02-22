@@ -122,5 +122,33 @@
             var movies = this.directors.GetById(directorId).Movies;
             return movies;
         }
+
+        public Movie Add(Movie movie)
+        {
+            movie.Ratings.Add(new MovieRating()
+            {
+                Value = 5
+            });
+
+            this.movies.Add(movie);
+
+            this.movies.SaveChanges();
+
+            return movie;
+        }
+
+        public void Delete(Movie movie)
+        {
+            this.movies.Delete(movie);
+            this.movies.SaveChanges();
+        }
+
+        public IQueryable<Movie> Update(Movie movie)
+        {
+            this.movies.Update(movie);
+            this.movies.SaveChanges();
+
+            return this.movies.All().Where(m => m.Id == movie.Id);
+        }
     }
 }

@@ -70,17 +70,6 @@
             entity.DeletedOn = DateTime.Now;
         }
 
-
-        public virtual void Delete(int id)
-        {
-            var entity = this.GetById(id);
-
-            if (entity != null)
-            {
-                this.Delete(entity);
-            }
-        }
-
         public void HardDelete(T entity)
         {
             DbEntityEntry entry = this.Context.Entry(entity);
@@ -95,7 +84,7 @@
             }
         }
 
-        public virtual void Delete(object id)
+        public void Delete(object id)
         {
             var entity = this.DbSet.Find(id);
 

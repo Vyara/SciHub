@@ -1,0 +1,39 @@
+﻿@using Kendo.Mvc.UI
+
+@(Html.Kendo().Grid<SciHub.Web.Areas.Admin.ViewModels.MovieAdminViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Title);
+          columns.Bound(c => c.Year);
+          columns.Bound(c => c.Summary);
+          columns.Bound(c => c.CreatedOn);
+          columns.Bound(c => c.ModifiedOn);
+          columns.Bound(c => c.IsDeleted);
+          columns.Bound(c => c.DeletedOn);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ToolBar(toolbar => {
+          toolbar.Create();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Navigatable()
+      .Selectable(selectable => {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Movies_Read", "Movies"))
+          .Create(create => create.Action("Movies_Create", "Movies"))
+          .Update(update => update.Action("Movies_Update", "Movies"))
+          .Destroy(destroy => destroy.Action("Movies_Destroy", "Movies"))
+      )
+)

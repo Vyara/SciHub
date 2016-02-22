@@ -1,7 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
+@using SciHub.Common.Constants
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right", area = ""}))
     {
         @Html.AntiForgeryToken()
 
@@ -10,8 +11,14 @@
                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", null, new {title = "Manage"})
             </li>
             <li>
-                @Html.ActionLink("Profile", "Index", "User", new { area = "User" }, null)
+                @Html.ActionLink("Profile", "Index", "User", new {area = "User"}, null)
             </li>
+            @if (User.IsInRole(UserRoleConstants.Admin))
+            {
+                <li>
+                    @Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, null)
+                </li>
+            }
             <li>
                 <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
             </li>

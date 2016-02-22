@@ -75,6 +75,36 @@ namespace SciHub.Data
             return base.SaveChanges();
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Movie>()
+                .HasMany(x => x.Comments)
+                .WithRequired(x => x.Movie)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder
+                .Entity<Book>()
+                .HasMany(x => x.Comments)
+               .WithRequired(x => x.Book)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder
+                .Entity<TvShow>()
+                .HasMany(x => x.Comments)
+                .WithRequired(x => x.TvShow)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder
+                .Entity<ShortStory>()
+                .HasMany(x => x.Comments)
+                .WithRequired(x => x.ShortStory)
+                .WillCascadeOnDelete(true);
+
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         private void ApplyAuditInfoRules()
         {
             // Approach via @julielerman: http://bit.ly/123661P

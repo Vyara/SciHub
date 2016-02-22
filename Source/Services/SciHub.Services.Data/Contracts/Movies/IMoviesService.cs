@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using SciHub.Services.Data.DataTransferObjects;
-
-namespace SciHub.Services.Data.Contracts.Movies
+﻿namespace SciHub.Services.Data.Contracts.Movies
 {
+    using System.Collections.Generic;
+    using SciHub.Services.Data.DataTransferObjects;
     using System.Linq;
     using SciHub.Data.Models.Movie;
 
@@ -15,6 +14,12 @@ namespace SciHub.Services.Data.Contracts.Movies
         PagedMoviesDto GetAllWithPaging(int page, int itemsPerPage, string order, string criteria);
 
         Movie GetById(int id);
+
+        Movie Add(Movie movie);
+
+        void Delete(Movie movie);
+
+        IQueryable<Movie> Update(Movie movie);
 
         void Rate(int movieId, float value, string userId);
 
