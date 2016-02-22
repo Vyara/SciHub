@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Areas.Movie.Controllers
+﻿using SciHub.Services.Data.Contracts;
+
+namespace SciHub.Web.Areas.Movie.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +10,6 @@
     using Common.Constants;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
-    using Services.Data.Contracts.Movies;
     using ViewModels.Movies;
     using Web.Controllers;
 

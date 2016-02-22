@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace SciHub.Data.Models.Book
+﻿namespace SciHub.Data.Models.Book
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

@@ -1,10 +1,11 @@
-﻿namespace SciHub.Services.Data
+﻿using SciHub.Services.Data.Contracts;
+
+namespace SciHub.Services.Data
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using SciHub.Data.Common.Repositories;
-    using Contracts.Movies;
     using DataTransferObjects;
     using SciHub.Data.Models.Common;
     using SciHub.Data.Models.TvShow;
@@ -26,11 +27,11 @@
 
         public IQueryable<TvShow> GetTop(int count)
         {
-            var ideas = this.shows.All()
+            var shows = this.shows.All()
                 .OrderByDescending(m => (m.Ratings.Sum(r => r.Value) / m.Ratings.Count()))
                 .ThenBy(m => m.CreatedOn)
                 .Take(count);
-            return ideas;
+            return shows;
         }
 
         public IQueryable<TvShow> GetAll()

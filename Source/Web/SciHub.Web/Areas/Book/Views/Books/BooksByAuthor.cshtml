@@ -1,10 +1,11 @@
-﻿@model SciHub.Web.Areas.Book.ViewModels.Books.TopBookListViewModel
+﻿@model SciHub.Web.Areas.Book.ViewModels.Books.BooksByAuthorListViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "MoviesByActor";
 }
 
-<h2> Top Books</h2>
+<h2>BooksByActor</h2>
 
+@Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer })
 @foreach (var book in Model.Books)
 {
 
@@ -14,18 +15,6 @@
         <div class="col-md-4">
             <img src="data:image;base64,@Convert.ToBase64String(book.Cover.Image)" style="width: 50%" alt="@book.Title Cover" />
         </div>
-        <strong>Author: </strong>
-        <p>@book.Author</p>
-        <p>Rating: @book.RatingsCount</p>
-        @if (@book.CommentsCount == 1)
-        {
-            <p>@book.CommentsCount Comment</p>
-        }
-
-        else
-        {
-            <p>@book.CommentsCount Comments</p>
-        }
         <div class="col-md-6">
             @Html.ActionLink("Details", "Details", "Books", new { id = book.Id }, new { area = "Book" })
         </div>

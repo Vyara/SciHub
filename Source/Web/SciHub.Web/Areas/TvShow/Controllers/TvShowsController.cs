@@ -1,10 +1,11 @@
-﻿namespace SciHub.Web.Areas.TvShow.Controllers
+﻿using SciHub.Services.Data.Contracts;
+
+namespace SciHub.Web.Areas.TvShow.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
     using SciHub.Common.Constants;
-    using SciHub.Services.Data.Contracts.Movies;
     using SciHub.Web.Areas.TvShow.ViewModels.TvShows;
     using SciHub.Web.Controllers;
     using SciHub.Web.Infrastructure.Mapping;
@@ -48,7 +49,7 @@
             var viewModel = this.Mapper.Map(movie, new TvShowDetailsViewModel());
             if (movie == null)
             {
-                return this.Content("Movie with this id was not found");
+                return this.Content("Tv Show with this id was not found");
             }
             return this.View(viewModel);
         }

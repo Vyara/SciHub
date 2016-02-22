@@ -1,14 +1,14 @@
-﻿namespace SciHub.Services.Data.Movies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using SciHub.Data.Common.Repositories;
-    using Contracts.Movies;
-    using DataTransferObjects;
-    using SciHub.Data.Models.Common;
-    using SciHub.Data.Models.Movie;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using SciHub.Data.Common.Repositories;
+using SciHub.Data.Models.Common;
+using SciHub.Data.Models.Movie;
+using SciHub.Services.Data.Contracts;
+using SciHub.Services.Data.DataTransferObjects;
 
+namespace SciHub.Services.Data
+{
     public class MoviesService : IMoviesService
     {
         private readonly IDbRepository<Movie> movies;
@@ -28,11 +28,11 @@
 
         public IQueryable<Movie> GetTop(int count)
         {
-            var ideas = this.movies.All()
+            var movies = this.movies.All()
                 .OrderByDescending(m => (m.Ratings.Sum(r => r.Value) / m.Ratings.Count()))
                 .ThenBy(m => m.CreatedOn)
                 .Take(count);
-            return ideas;
+            return movies;
         }
 
         public IQueryable<Movie> GetAll()

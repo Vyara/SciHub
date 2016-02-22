@@ -1,10 +1,10 @@
-﻿namespace SciHub.Services.Data.Contracts.Movies
-{
-    using System.Collections.Generic;
-    using SciHub.Services.Data.DataTransferObjects;
-    using System.Linq;
-    using SciHub.Data.Models.Movie;
+﻿using System.Collections.Generic;
+using System.Linq;
+using SciHub.Data.Models.Movie;
+using SciHub.Services.Data.DataTransferObjects;
 
+namespace SciHub.Services.Data.Contracts
+{
     public interface IMoviesService
     {
         IQueryable<Movie> GetTop(int count);

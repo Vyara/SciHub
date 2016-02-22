@@ -1,18 +1,16 @@
-﻿using System.Web.Mvc;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
-using SciHub.Services.Data.Contracts;
-using SciHub.Services.Data.Contracts.Movies;
-using SciHub.Web.Areas.Admin.ViewModels;
-using SciHub.Web.Infrastructure.Mapping;
-
-namespace SciHub.Web.Areas.Admin.Controllers
+﻿namespace SciHub.Web.Areas.Admin.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using Data.Models;
+    using System.Web.Mvc;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+    using SciHub.Services.Data.Contracts;
+    using SciHub.Web.Areas.Admin.ViewModels;
+    using SciHub.Web.Infrastructure.Mapping;
 
     public class UsersController : BaseAdminController
     {

@@ -1,0 +1,81 @@
+﻿@model SciHub.Web.Areas.Book.ViewModels.Books.BookDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.ActionLink("Back To The Books", "Index", "Books")</h2>
+
+<div class="row well">
+    <div class="col-lg-5">
+        <img src="data:image;base64,@Convert.ToBase64String(@Model.Cover.Image)" style="width: 100%" alt="@Model.Title Cover" />
+    </div>
+    <div class="col-lg-7">
+        <h2>@Model.Title</h2>
+        <h5>(@Model.PublicationYear)</h5>
+        <br />
+        <h4>Author:</h4>
+        @Html.ActionLink(@Model.Author.FullName, "BooksByAuthor", "Books", new { id = Model.Author.Id }, new { area = "Book" })
+        <h4>Summary:</h4>
+        <p>@Model.Summary</p>
+
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span id="current-rating">@string.Format("{0}", Model.RatingsCount) </span>
+
+        @if (Request.IsAuthenticated)
+        {
+            <div>
+                @Ajax.ActionLink("Rate", "Rate", "Books", new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "current-rating",
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace
+            }, new { @class = "btn btn-info" })
+            </div>
+        }
+        @if (@Model.CommentsCount == 1)
+        {
+            <h4>@Model.CommentsCount Comment</h4>
+        }
+
+        else
+        {
+            <h4>@Model.CommentsCount Comments</h4>
+        }
+
+        @foreach (var tag in Model.Tags)
+        {
+            <span>@Html.ActionLink("#" + @tag.Name, "BooksByTag", "Books", new { id = @tag.Id }, new { area = "Book" })</span>
+        }
+    </div>
+
+
+
+</div>
+@if (Request.IsAuthenticated)
+{
+    <div>
+        @Ajax.ActionLink("Add a Comment", "Rate", "Movies", new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "holder",
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace
+            }, new { @class = "btn btn-info" })
+    </div>
+}
+@foreach (var comment in Model.Comments)
+{
+    <div class="row well-sm">
+        <div class="well-sm">
+            @comment.Content
+        </div>
+        <p>Posted on: @comment.CreatedOn, By: @comment.Author </p>
+    </div>
+}
+
+
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}

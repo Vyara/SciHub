@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Areas.Movie.Controllers
+﻿using SciHub.Services.Data.Contracts;
+
+namespace SciHub.Web.Areas.Movie.Controllers
 {
     using System.Web.Mvc;
     using Web.Controllers;
@@ -8,7 +10,6 @@
     using System.Web;
     using SciHub.Common.Constants;
     using SciHub.Web.Infrastructure.Mapping;
-    using SciHub.Services.Data.Contracts.Movies;
     using SciHub.Web.Areas.Movie.ViewModels.Movies;
 
     public class HomeController : BaseController

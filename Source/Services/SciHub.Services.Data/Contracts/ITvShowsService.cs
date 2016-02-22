@@ -1,14 +1,10 @@
-﻿using SciHub.Data.Models.TvShow;
+﻿using System.Collections.Generic;
+using System.Linq;
+using SciHub.Data.Models.TvShow;
 using SciHub.Services.Data.DataTransferObjects;
 
-namespace SciHub.Services.Data.Contracts.Movies
+namespace SciHub.Services.Data.Contracts
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     public interface ITvShowsService
     {
         IQueryable<TvShow> GetTop(int count);

@@ -58,13 +58,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActorsService.cs" />
+    <Compile Include="BooksService.cs" />
     <Compile Include="Contracts\IActorsService.cs" />
-    <Compile Include="Contracts\Movies\IMoviesService.cs" />
-    <Compile Include="Contracts\Movies\ITvShowsService.cs" />
+    <Compile Include="Contracts\IBooksService.cs" />
+    <Compile Include="Contracts\IMoviesService.cs" />
+    <Compile Include="Contracts\ITvShowsService.cs" />
+    <Compile Include="DataTransferObjects\PagedBooksDto.cs" />
     <Compile Include="DataTransferObjects\PagedMoviesDto.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="DataTransferObjects\PagedTvShowsDto.cs" />
-    <Compile Include="Movies\MoviesService.cs" />
+    <Compile Include="MoviesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TvShowsService.cs" />
     <Compile Include="UsersService.cs" />

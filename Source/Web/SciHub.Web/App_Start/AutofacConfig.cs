@@ -1,5 +1,5 @@
 ﻿using SciHub.Services.Web.Contracts;
-using IMoviesService = SciHub.Services.Data.Contracts.Movies.IMoviesService;
+using IMoviesService = SciHub.Services.Data.Contracts.IMoviesService;
 
 namespace SciHub.Web
 {

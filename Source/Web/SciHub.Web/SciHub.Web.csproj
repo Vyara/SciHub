@@ -218,6 +218,16 @@
     <Compile Include="Areas\Admin\ViewModels\UserAdminViewModel.cs" />
     <Compile Include="Areas\Book\BookAreaRegistration.cs" />
     <Compile Include="Areas\Book\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Book\Controllers\BooksController.cs" />
+    <Compile Include="Areas\Book\ViewModels\Comments\BookCommentViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Books\AllBooksBookViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Books\BookDetailsViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Books\BooksByAuthorListViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Books\BooksPageableListViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Books\BookAuthorViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Books\TopBookIndexViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Books\TopBookListViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Ratings\BookRatingViewModel.cs" />
     <Compile Include="Areas\Movie\Controllers\HomeController.cs" />
     <Compile Include="Areas\Movie\Controllers\MoviesController.cs" />
     <Compile Include="Areas\Movie\MovieAreaRegistration.cs" />
@@ -383,6 +393,12 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Book\Views\Books\_RateOptions.cshtml" />
+    <Content Include="Areas\Book\Views\Books\Details.cshtml" />
+    <Content Include="Areas\Book\Views\Books\Index.cshtml" />
+    <Content Include="Areas\Book\Views\Books\BooksByAuthor.cshtml" />
+    <Content Include="Areas\Book\Views\Books\BooksByTag.cshtml" />
+    <Content Include="Areas\Book\Views\Books\Rate.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -447,7 +463,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Book\ViewModels\" />
     <Folder Include="Areas\ShortStory\ViewModels\" />
     <Folder Include="Areas\User\Views\Shared\EditorTemplates\" />
     <Folder Include="Content\Kendo\" />

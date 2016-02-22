@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Areas.TvShow.Controllers
+﻿using SciHub.Services.Data.Contracts;
+
+namespace SciHub.Web.Areas.TvShow.Controllers
 {
     using System.Web.Mvc;
     using Web.Controllers;
@@ -7,7 +9,6 @@
     using System.Linq;
     using System.Web;
     using SciHub.Common.Constants;
-    using SciHub.Services.Data.Contracts.Movies;
     using SciHub.Web.Areas.Movie.ViewModels.Movies;
     using SciHub.Web.Areas.TvShow.ViewModels.TvShows;
     using SciHub.Web.Infrastructure.Mapping;
@@ -25,7 +26,7 @@
         public ActionResult Index()
         {
             // Todo: Cache
-            var topTvshows = this.shows.GetTop(WebConstants.NumberOfTopTvShowsForMoviesHomePage).To<TopTvShowIndexViewModel>().ToList();
+            var topTvshows = this.shows.GetTop(WebConstants.NumberOfTopTvShowsForTvShowsHomePage).To<TopTvShowIndexViewModel>().ToList();
             var viewModel = new TopTvShowListViewModel
             {
                 TvShows = topTvshows

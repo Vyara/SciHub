@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Areas.Admin.Controllers
+﻿using SciHub.Services.Data.Contracts;
+
+namespace SciHub.Web.Areas.Admin.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -6,7 +8,6 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Services.Data.Contracts.Movies;
     using ViewModels;
 
     public class MoviesController : BaseAdminController
