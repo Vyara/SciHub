@@ -74,6 +74,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\SciHub.Common\SciHub.Common.csproj">
+      <Project>{541092dc-2cfd-4593-88fc-3cc0e0ea87e0}</Project>
+      <Name>SciHub.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\SciHub.Data.Common\SciHub.Data.Common.csproj">
       <Project>{7574e520-169f-49f1-abe2-cdb409ff0cf1}</Project>
       <Name>SciHub.Data.Common</Name>
