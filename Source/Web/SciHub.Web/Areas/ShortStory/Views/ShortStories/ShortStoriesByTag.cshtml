@@ -1,0 +1,19 @@
+﻿@model SciHub.Web.Areas.ShortStory.ViewModels.ShortStories.ShortStoriesByAuthorListViewModel
+@{
+    ViewBag.Title = "ShortStoriesByTag";
+}
+
+<h2>ShortStoriesByTag</h2>
+
+@Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer })
+@foreach (var story in Model.ShortStories)
+{
+    <div class="row well">
+        <h3>@story.Title</h3>
+        <p>Added On: @story.CreatedOn.ToShortDateString()</p>
+        <div class="col-md-6">
+            @Html.ActionLink("Details", "Details", "ShortStories", new { id = story.Id }, new { area = "ShortStory" })
+        </div>
+
+    </div>
+}

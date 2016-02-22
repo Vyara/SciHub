@@ -1,0 +1,79 @@
+﻿@model SciHub.Web.Areas.ShortStory.ViewModels.ShortStories.ShortStoryDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.ActionLink("Back To The Stories", "Index", "ShortStories")</h2>
+
+<div class="row well">
+    <div class="col-lg-7">
+        <h2>@Model.Title</h2>
+        <h5>@Model.AddedOn</h5>
+        <br />
+        <h4>Author:</h4>
+        @Html.ActionLink(@Model.Author.Name, "ShortStoriesByAuthor", "ShortStories", new { id = Model.Author.Id }, new { area = "ShortStory" })
+        <div class="text-left">
+            @Model.Content
+        </div>
+
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        <span id="current-rating">@string.Format("{0}", Model.RatingsCount) </span>
+
+        @if (Request.IsAuthenticated)
+        {
+            <div>
+                @Ajax.ActionLink("Rate", "Rate", "ShortStories", new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "current-rating",
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace
+            }, new { @class = "btn btn-info" })
+            </div>
+        }
+        @if (@Model.CommentsCount == 1)
+        {
+            <h4>@Model.CommentsCount Comment</h4>
+        }
+
+        else
+        {
+            <h4>@Model.CommentsCount Comments</h4>
+        }
+
+        @foreach (var tag in Model.Tags)
+        {
+            <span>@Html.ActionLink("#" + @tag.Name, "ShortStoriesByTag", "ShortStories", new { id = @tag.Id }, new { area = "ShortStory" })</span>
+        }
+    </div>
+
+
+
+</div>
+@if (Request.IsAuthenticated)
+{
+    <div>
+        @Ajax.ActionLink("Add a Comment", "Rate", "ShortStories", new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "holder",
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace
+            }, new { @class = "btn btn-info" })
+    </div>
+}
+@foreach (var comment in Model.Comments)
+{
+    <div class="row well-sm">
+        <div class="well-sm">
+            @comment.Content
+        </div>
+        <p>Posted on: @comment.CreatedOn, By: @comment.Author </p>
+    </div>
+}
+
+
+
+@section scripts {
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}

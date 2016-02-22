@@ -235,6 +235,16 @@
     <Compile Include="Areas\Movie\ViewModels\Movies\MoviesByActorListViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MovieStudioViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Ratings\MovieRatingViewModel.cs" />
+    <Compile Include="Areas\ShortStory\Controllers\ShortStoriesController.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\Comments\ShortStoryCommentViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\Ratings\ShortStoryRatingViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\ShortStories\AllShortStoriesShortStoryViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\ShortStories\ShortStoryAuthorViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\ShortStories\ShortStoryDetailsViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\ShortStories\ShortStoriesByAuthorListViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\ShortStories\ShortStoriesPageableListViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\ShortStories\TopShortStoryIndexViewModel.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\ShortStories\TopShortStoryListViewModel.cs" />
     <Compile Include="Areas\TvShow\Controllers\TvShowsController.cs" />
     <Compile Include="Areas\TvShow\ViewModels\Comments\TvShowCommentViewModel.cs" />
     <Compile Include="Areas\TvShow\ViewModels\Ratings\TvShowRatingViewModel.cs" />
@@ -399,6 +409,12 @@
     <Content Include="Areas\Book\Views\Books\BooksByAuthor.cshtml" />
     <Content Include="Areas\Book\Views\Books\BooksByTag.cshtml" />
     <Content Include="Areas\Book\Views\Books\Rate.cshtml" />
+    <Content Include="Areas\ShortStory\Views\ShortStories\_RateOptions.cshtml" />
+    <Content Include="Areas\ShortStory\Views\ShortStories\ShortStoriesByAuthor.cshtml" />
+    <Content Include="Areas\ShortStory\Views\ShortStories\ShortStoriesByTag.cshtml" />
+    <Content Include="Areas\ShortStory\Views\ShortStories\Details.cshtml" />
+    <Content Include="Areas\ShortStory\Views\ShortStories\Index.cshtml" />
+    <Content Include="Areas\ShortStory\Views\ShortStories\Rate.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -463,7 +479,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\ShortStory\ViewModels\" />
     <Folder Include="Areas\User\Views\Shared\EditorTemplates\" />
     <Folder Include="Content\Kendo\" />
     <Folder Include="Views\Movies\" />

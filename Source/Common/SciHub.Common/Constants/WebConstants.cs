@@ -8,6 +8,8 @@
         public const int AllTvShowsPageSize = 5;
         public const int NumberOfTopBooksForBooksHomePage = 6;
         public const int AllBooksPageSize = 5;
+        public const int NumberOfTopShortStoriesForShortStoriesHomePage = 6;
+        public const int AllShortStoriesPageSize = 5;
 
     }
 }

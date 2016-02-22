@@ -1,7 +1,31 @@
-﻿
+﻿@model SciHub.Web.Areas.ShortStory.ViewModels.ShortStories.TopShortStoryListViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2> ShortStory Index</h2>
+<h2>Top Short stories</h2>
 
+@foreach (var story in Model.ShortStories)
+{
+
+    <div class="row well">
+        <h3>@story.Title</h3>
+        <p>Added On: @story.AddedOn</p>
+        <strong>Author: </strong>
+        <p>@story.Author</p>
+        <p>Rating: @story.RatingsCount</p>
+        @if (@story.CommentsCount == 1)
+        {
+            <p>@story.CommentsCount Comment</p>
+        }
+
+        else
+        {
+            <p>@story.CommentsCount Comments</p>
+        }
+        <div class="col-md-6">
+            @Html.ActionLink("Details", "Details", "ShortStories", new { id = story.Id }, new { area = "ShortStory" })
+        </div>
+
+    </div>
+}
