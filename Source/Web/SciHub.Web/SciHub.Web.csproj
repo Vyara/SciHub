@@ -355,6 +355,8 @@
     <Content Include="Areas\TvShow\Views\TvShows\Rate.cshtml" />
     <Content Include="Areas\TvShow\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Libraries\Kendo\Kendo.Mvc.dll" />
+    <Content Include="Libraries\Kendo\Kendo.Mvc.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
