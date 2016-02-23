@@ -27,24 +27,25 @@
         [HttpGet]
         public ActionResult Index(int id = 1, string order = "newest", string criteria = "")
         {
-            // Todo: cache
 
             if (order != "newest" && order != "top")
             {
-                // Todo: validate
+                this.Response.StatusCode = 412;
+                return this.Content("Order not right");
             }
 
             var page = id;
             var pagedStories = this.stories.GetAllWithPaging(page, WebConstants.AllShortStoriesPageSize, order, criteria);
-            var viewModel = new ShortStoriesPageableListViewModel()
+
+            var cachedViewModel = this.Cache.Get("shortStoriesPaged", () => new ShortStoriesPageableListViewModel()
             {
                 CurrentPage = page,
                 AllItemsCount = pagedStories.AllItemsCount,
                 TotalPages = pagedStories.TotalPages,
                 ShortStories = pagedStories.ShortStories.To<AllShortStoriesShortStoryViewModel>().AsEnumerable()
-            };
+            }, WebConstants.ShortStoriesCacheTime);
 
-            return this.View(viewModel);
+            return this.View(cachedViewModel);
         }
 
         [HttpGet]
@@ -79,8 +80,6 @@
         [HttpGet]
         public ActionResult ShortStoriesByAuthor(string id)
         {
-            // Todo: Cache
-  
             var topStories = this.stories.GetAuthorStories(id).ToList();
 
             var viewModel = new ShortStoriesByAuthorListViewModel
@@ -94,7 +93,6 @@
         [HttpGet]
         public ActionResult ShortStoriesByTag(int id)
         {
-            // Todo: Cache
 
             var topStories = this.stories.GetTagStories(id).ToList();
 

@@ -25,24 +25,26 @@
         [HttpGet]
         public ActionResult Index(int id = 1, string order = "newest", string criteria = "")
         {
-            // Todo: cache
+
 
             if (order != "newest" && order != "top")
             {
-                // Todo: validate
+                this.Response.StatusCode = 412;
+                return this.Content("Order not right");
             }
 
             var page = id;
             var pagedBooks = this.books.GetAllWithPaging(page, WebConstants.AllBooksPageSize, order, criteria);
-            var viewModel = new BooksPageableListViewModel()
+
+            var cachedViewModel = this.Cache.Get("booksPaged", () => new BooksPageableListViewModel()
             {
                 CurrentPage = page,
                 AllItemsCount = pagedBooks.AllItemsCount,
                 TotalPages = pagedBooks.TotalPages,
                 Books = pagedBooks.Books.To<AllBooksBookViewModel>().AsEnumerable()
-            };
+            }, WebConstants.BooksCacheTime);
 
-            return this.View(viewModel);
+            return this.View(cachedViewModel);
         }
 
         [HttpGet]
@@ -77,7 +79,6 @@
         [HttpGet]
         public ActionResult BooksByAuthor(int id)
         {
-            // Todo: Cache
 
             var topBooks = this.books.GetAuthorBooks(id).ToList();
 
@@ -92,7 +93,6 @@
         [HttpGet]
         public ActionResult BooksByTag(int id)
         {
-            // Todo: Cache
 
             var topBooks = this.books.GetTagBooks(id).ToList();
 

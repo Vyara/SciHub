@@ -27,24 +27,25 @@
         [HttpGet]
         public ActionResult Index(int id = 1, string order = "newest", string criteria = "")
         {
-            // Todo: cache
 
             if (order != "newest" && order != "top")
             {
-                // Todo: validate
+                this.Response.StatusCode = 412;
+                return this.Content("Order not right");
             }
 
             var page = id;
             var pagedMovies = this.movies.GetAllWithPaging(page, WebConstants.AllMoviesPageSize, order, criteria);
-            var viewModel = new MoviesPageableListViewModel()
+
+            var cachedViewModel = this.Cache.Get("moviesPaged", () => new MoviesPageableListViewModel()
             {
                 CurrentPage = page,
                 AllItemsCount = pagedMovies.AllItemsCount,
                 TotalPages = pagedMovies.TotalPages,
                 Movies = pagedMovies.Movies.To<AllMoviesMovieViewModel>().AsEnumerable()
-            };
+            }, WebConstants.MoviesCacheTime);
 
-            return this.View(viewModel);
+            return this.View(cachedViewModel);
         }
 
         [HttpGet]
@@ -80,8 +81,7 @@
         [HttpGet]
         public ActionResult MoviesByActor(int id)
         {
-            // Todo: Cache
-  
+
             var topMovies = this.movies.GetActorMovies(id).ToList();
 
             var viewModel = new MoviesByActorListViewModel
@@ -95,7 +95,6 @@
         [HttpGet]
         public ActionResult MoviesByTag(int id)
         {
-            // Todo: Cache
 
             var topMovies = this.movies.GetTagMovies(id).ToList();
 
@@ -110,7 +109,6 @@
         [HttpGet]
         public ActionResult MoviesByDirector(int id)
         {
-            // Todo: Cache
 
             var topMovies = this.movies.GetDirectorMovies(id).ToList();
 
@@ -125,7 +123,6 @@
         [HttpGet]
         public ActionResult MoviesByStudio(int id)
         {
-            // Todo: Cache
 
             var topMovies = this.movies.GetStudioMovies(id).ToList();
 

@@ -19,14 +19,14 @@
 
         public ActionResult Index()
         {
-            // Todo: Cache
             var topBooks = this.books.GetTop(WebConstants.NumberOfTopBooksForBooksHomePage).To<TopBookIndexViewModel>().ToList();
-            var viewModel = new TopBookListViewModel
+
+            var cachedViewModel = this.Cache.Get("TopBooks", () => new TopBookListViewModel
             {
                 Books = topBooks
-            };
+            }, WebConstants.BooksCacheTime);
 
-            return this.View(viewModel);
+            return this.View(cachedViewModel);
         }
     }
 }

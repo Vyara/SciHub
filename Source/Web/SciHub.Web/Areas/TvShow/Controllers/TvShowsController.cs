@@ -1,6 +1,4 @@
-﻿using SciHub.Services.Data.Contracts.Comment;
-
-namespace SciHub.Web.Areas.TvShow.Controllers
+﻿namespace SciHub.Web.Areas.TvShow.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -13,6 +11,7 @@ namespace SciHub.Web.Areas.TvShow.Controllers
     using SciHub.Services.Data;
     using SciHub.Web.Areas.Movie.ViewModels.Comments;
     using SciHub.Web.Areas.TvShow.ViewModels.Comments;
+    using SciHub.Services.Data.Contracts.Comment;
 
 
     public class TvShowsController : BaseController
@@ -29,24 +28,24 @@ namespace SciHub.Web.Areas.TvShow.Controllers
         [HttpGet]
         public ActionResult Index(int id = 1, string order = "newest", string criteria = "")
         {
-            // Todo: cache
-
             if (order != "newest" && order != "top")
             {
-                // Todo: validate
+                this.Response.StatusCode = 412;
+                return this.Content("Order not right");
             }
 
             var page = id;
             var pagedtvShows = this.tvShows.GetAllWithPaging(page, WebConstants.AllTvShowsPageSize, order, criteria);
-            var viewModel = new TvShowsPageableListViewModel()
+
+            var cachedViewModel = this.Cache.Get("tvShowsPaged", () => new TvShowsPageableListViewModel()
             {
                 CurrentPage = page,
                 AllItemsCount = pagedtvShows.AllItemsCount,
                 TotalPages = pagedtvShows.TotalPages,
                 TvShows = pagedtvShows.TvShows.To<AllTvShowsTvShowViewModel>().AsEnumerable()
-            };
+            }, WebConstants.TvShowsCacheTime);
 
-            return this.View(viewModel);
+            return this.View(cachedViewModel);
         }
 
         [HttpGet]
@@ -99,8 +98,6 @@ namespace SciHub.Web.Areas.TvShow.Controllers
         [HttpGet]
         public ActionResult TvShowsByTag(int id)
         {
-            // Todo: Cache
-
             var toptvShows = this.tvShows.GetTagShows(id).ToList();
 
             var viewModel = new TvShowsByActorListViewModel
@@ -115,8 +112,6 @@ namespace SciHub.Web.Areas.TvShow.Controllers
         [HttpGet]
         public ActionResult TvShowsByChannel(int id)
         {
-            // Todo: Cache
-
             var toptvShows = this.tvShows.GetChannelShows(id).ToList();
 
             var viewModel = new TvShowsByActorListViewModel

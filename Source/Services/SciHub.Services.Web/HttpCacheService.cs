@@ -1,10 +1,9 @@
-﻿using SciHub.Services.Web.Contracts;
-
-namespace SciHub.Services.Web
+﻿namespace SciHub.Services.Web
 {
     using System;
     using System.Web;
     using System.Web.Caching;
+    using SciHub.Services.Web.Contracts;
 
     public class HttpCacheService : ICacheService
     {

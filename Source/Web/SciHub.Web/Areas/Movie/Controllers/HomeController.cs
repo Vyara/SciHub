@@ -1,6 +1,4 @@
-﻿using SciHub.Services.Data.Contracts;
-
-namespace SciHub.Web.Areas.Movie.Controllers
+﻿namespace SciHub.Web.Areas.Movie.Controllers
 {
     using System.Web.Mvc;
     using Web.Controllers;
@@ -9,6 +7,7 @@ namespace SciHub.Web.Areas.Movie.Controllers
     using System.Linq;
     using System.Web;
     using SciHub.Common.Constants;
+    using SciHub.Services.Data.Contracts;
     using SciHub.Web.Infrastructure.Mapping;
     using SciHub.Web.Areas.Movie.ViewModels.Movies;
 
@@ -24,14 +23,14 @@ namespace SciHub.Web.Areas.Movie.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            // Todo: Cache
             var topMovies = this.movies.GetTop(WebConstants.NumberOfTopMoviesForMoviesHomePage).To<TopMovieIndexViewModel>().ToList();
-            var viewModel = new TopMovieListViewModel
+
+            var cachedViewModel = this.Cache.Get("TopMovies", () => new TopMovieListViewModel
             {
                 Movies = topMovies
-            };
+            }, WebConstants.MoviesCacheTime);
 
-            return this.View(viewModel);
+            return this.View(cachedViewModel);
         }
     }
 }
