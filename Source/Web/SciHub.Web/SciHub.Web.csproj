@@ -231,6 +231,7 @@
     <Compile Include="Areas\Movie\Controllers\HomeController.cs" />
     <Compile Include="Areas\Movie\Controllers\MoviesController.cs" />
     <Compile Include="Areas\Movie\MovieAreaRegistration.cs" />
+    <Compile Include="Areas\Movie\ViewModels\Comments\MovieCommentInputModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Comments\MovieCommentViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MoviesByActorListViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\MovieStudioViewModel.cs" />
@@ -407,6 +408,10 @@
     <Content Include="Areas\ShortStory\Views\ShortStories\ShortStoriesByTag.cshtml" />
     <Content Include="Areas\ShortStory\Views\ShortStories\Details.cshtml" />
     <Content Include="Areas\ShortStory\Views\ShortStories\Index.cshtml" />
+    <Content Include="Areas\Movie\Views\Shared\_AddComment.cshtml" />
+    <Content Include="Areas\Movie\Views\Shared\DisplayTemplates\MovieCommentViewModel.cshtml" />
+    <Content Include="Areas\Movie\Views\Shared\_MovieComment.cshtml" />
+    <Content Include="Areas\Movie\Views\Shared\_AllComments.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -474,6 +479,7 @@
     <Folder Include="Areas\User\Views\Shared\EditorTemplates\" />
     <Folder Include="Content\Kendo\" />
     <Folder Include="Views\Movies\" />
+    <Folder Include="Views\Shared\DisplayTemplates\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>

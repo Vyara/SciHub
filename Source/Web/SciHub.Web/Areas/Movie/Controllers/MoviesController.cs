@@ -7,6 +7,8 @@
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
+    using Services.Data.Contracts.Comment;
+    using ViewModels.Comments;
     using ViewModels.Movies;
     using Web.Controllers;
 
@@ -14,10 +16,12 @@
     public class MoviesController : BaseController
     {
         private readonly IMoviesService movies;
+        private readonly IMovieCommentsService comments;
 
-        public MoviesController(IMoviesService movies)
+        public MoviesController(IMoviesService movies, IMovieCommentsService comments)
         {
             this.movies = movies;
+            this.comments = comments;
         }
 
         [HttpGet]
@@ -130,6 +134,46 @@
             };
 
             return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult AddComment(int id)
+        {
+            var viewModel = new MovieCommentInputModel()
+            {
+                Content = string.Empty,
+                MovieId = id
+
+            };
+            return this.PartialView("_AddComment", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment(MovieCommentInputModel comment)
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                this.Response.StatusCode = 401;
+                return this.Content("Access is denied");
+            }
+
+            if (comment == null || !this.ModelState.IsValid)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request");
+            }
+
+            var newComment = this.comments.Add(comment.Content, comment.MovieId, this.User.Identity.GetUserId());
+            if (newComment == null)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request.");
+            }
+
+            var viewModel = this.Mapper.Map<MovieCommentViewModel>(newComment);
+
+            return this.PartialView("_MovieComment", viewModel);
         }
     }
 }

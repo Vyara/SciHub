@@ -39,7 +39,7 @@
         <p>@Model.Summary</p>
 
         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span id="current-rating">@string.Format("{0}", Model.RatingsCount) </span>
+        <span id="current-rating">@string.Format("{0:F1}", Model.RatingsCount) </span>
 
 
         @if (Request.IsAuthenticated)

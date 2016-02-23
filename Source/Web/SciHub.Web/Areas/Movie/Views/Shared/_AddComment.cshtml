@@ -1,0 +1,18 @@
+﻿@model SciHub.Web.Areas.Movie.ViewModels.Comments.MovieCommentInputModel
+
+@using (Ajax.BeginForm("AddComment", "Movies", new AjaxOptions()
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "comments",
+    InsertionMode = InsertionMode.InsertBefore,
+    OnSuccess = "onCommentSuccess",
+    OnFailure = "onCommentFail"
+}))
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(m => m.MovieId)
+    @Html.TextAreaFor(m => m.Content, 5, 40, new {id = "commentBox"})
+    @Html.ValidationMessageFor(m => m.Content, string.Empty, new {@class = "text-danger"})
+    <br/>
+    <input type="submit" class="btn btn-sm" value="Add Comment"/>
+}
