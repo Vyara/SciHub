@@ -48,7 +48,7 @@
         <strong>Cast: </strong>
         <p>@movie.LeadActor</p>
         <p>@movie.SupportActor</p>
-        <p>Rating: @movie.RatingsCount</p>
+        <p>Rating: @string.Format("{0:F1}", movie.RatingsCount)</p>
         <p>
             @movie.Summary.Substring(0, Math.Min(movie.Summary.Length, 100))
             @if (@movie.Summary.Length >= 100)

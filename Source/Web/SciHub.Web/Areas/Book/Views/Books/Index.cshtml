@@ -47,7 +47,7 @@
         </div>
         <strong>Author: </strong>
         <p>@book.Author</p>
-        <p>Rating: @book.RatingsCount</p>
+        <p>Rating: @string.Format("{0:F1}", book.RatingsCount)</p>
         <p>
             @book.Summary.Substring(0, Math.Min(book.Summary.Length, 100))
             @if (@book.Summary.Length >= 100)

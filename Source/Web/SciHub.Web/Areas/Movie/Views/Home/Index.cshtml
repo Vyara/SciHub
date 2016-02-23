@@ -17,7 +17,7 @@
         <strong>Cast: </strong>
         <p>@movie.LeadActor</p>
         <p>@movie.SupportActor</p>
-        <p>Rating: @movie.RatingsCount</p>
+        <p>Rating: @string.Format("{0:F1}", movie.RatingsCount)</p>
         @if (@movie.CommentsCount == 1)
         {
             <p>@movie.CommentsCount Comment</p>

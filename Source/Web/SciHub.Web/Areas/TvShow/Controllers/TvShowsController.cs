@@ -1,14 +1,14 @@
-﻿using SciHub.Services.Data.Contracts;
-
-namespace SciHub.Web.Areas.TvShow.Controllers
+﻿namespace SciHub.Web.Areas.TvShow.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
     using Microsoft.AspNet.Identity;
     using SciHub.Common.Constants;
+    using SciHub.Web.Infrastructure.Mapping;
+    using SciHub.Services.Data.Contracts;
     using SciHub.Web.Areas.TvShow.ViewModels.TvShows;
     using SciHub.Web.Controllers;
-    using SciHub.Web.Infrastructure.Mapping;
+
 
     public class TvShowsController : BaseController
     {
@@ -45,24 +45,20 @@ namespace SciHub.Web.Areas.TvShow.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var movie = this.tvShows.GetById(id);
-            var viewModel = this.Mapper.Map(movie, new TvShowDetailsViewModel());
-            if (movie == null)
+            var tvShow = this.tvShows.GetById(id);
+            var viewModel = this.Mapper.Map(tvShow, new TvShowDetailsViewModel());
+            if (tvShow == null)
             {
                 return this.Content("Tv Show with this id was not found");
             }
             return this.View(viewModel);
         }
 
-        [HttpGet]
-        public ActionResult Rate(int id)
-        {
-            return this.PartialView("_RateOptions", id);
-        }
-
+        [Authorize]
         [HttpPost]
-        public ActionResult Rate(int id, float value)
+        public ActionResult Details(int id, float value)
         {
+            //Todo: check if user already rated this
             if (value > 5)
             {
                 value = 5;
@@ -72,16 +68,16 @@ namespace SciHub.Web.Areas.TvShow.Controllers
             {
                 value = 1;
             }
-
-           this.tvShows.Rate(id, value, this.User.Identity.GetUserId());
-            return this.View();
+            this.tvShows.Rate(id, value, this.User.Identity.GetUserId());
+            return this.RedirectToAction("Details");
         }
+
 
         [HttpGet]
         public ActionResult TvShowsByActor(int id)
         {
             // Todo: Cache
-  
+
             var toptvShows = this.tvShows.GetActorShows(id).ToList();
 
             var viewModel = new TvShowsByActorListViewModel
@@ -91,6 +87,7 @@ namespace SciHub.Web.Areas.TvShow.Controllers
 
             return this.View(viewModel);
         }
+
 
         [HttpGet]
         public ActionResult TvShowsByTag(int id)

@@ -57,7 +57,7 @@
         <strong>Cast: </strong>
         <p>@show.LeadActor</p>
         <p>@show.SupportActor</p>
-        <p>Rating: @show.RatingsCount</p>
+        <p>Rating: @string.Format("{0:F1}", show.RatingsCount)</p>
         <p>
             @show.Summary.Substring(0, Math.Min(show.Summary.Length, 100))
             @if (@show.Summary.Length >= 100)

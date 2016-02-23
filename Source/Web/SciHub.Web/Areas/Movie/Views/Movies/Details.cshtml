@@ -27,18 +27,26 @@
         <p>@Model.Summary</p>
 
         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-        <span id="current-rating">@string.Format("{0}", Model.RatingsCount) </span>
+        <span id="current-rating">@string.Format("{0:F1}", Model.RatingsCount) </span>
 
         @if (Request.IsAuthenticated)
         {
-            <div>
-                @Ajax.ActionLink("Rate", "Rate", "Movies", new { id = Model.Id },
-            new AjaxOptions
-            {
-                UpdateTargetId = "current-rating",
-                HttpMethod = "GET",
-                InsertionMode = InsertionMode.Replace
-            }, new { @class = "btn btn-info" })
+            <div id="modal-opener" class="btn btn-default">Rate</div>
+
+            <div id="dialog-modal" title="Rate @Model.Title">
+                @using (Ajax.BeginForm("Details", "Movies", FormMethod.Post, new AjaxOptions { UpdateTargetId = "current-rating", OnSuccess = "onSuccess" }))
+                {
+                    <div>
+                        <fieldset>
+                            @for (float i = 1; i <= 5; i++)
+                            {
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                <input type="submit" name="value" value="@i" class="btn btn-sm" />
+                               <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                            }
+                        </fieldset>
+                    </div>
+                }
             </div>
         }
         @if (@Model.CommentsCount == 1)
@@ -63,7 +71,7 @@
 @if (Request.IsAuthenticated)
 {
     <div>
-        @Ajax.ActionLink("Add a Comment", "Rate", "Movies", new { id = Model.Id },
+        @Ajax.ActionLink("Add a Comment", "Details", "Movies", new { id = Model.Id },
             new AjaxOptions
             {
                 UpdateTargetId = "holder",
@@ -85,5 +93,29 @@
 
 
 @section scripts {
-    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+    <script>
+        $(function () {
+            $("#dialog-modal").dialog({
+                autoOpen: false,
+                width: 330,
+                height: 100,
+                show: {
+                    effect: "scale",
+                    duration: 500
+                },
+                hide: {
+                    effect: "scale",
+                    duration: 500
+                }
+            });
+
+            $("#modal-opener").click(function () {
+                $("#dialog-modal").dialog("open");
+            });
+        });
+
+        function onSuccess() {
+            $("#dialog-modal").dialog("close");
+        }
+    </script>
 }

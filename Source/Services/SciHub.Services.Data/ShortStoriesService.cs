@@ -114,7 +114,7 @@
 
         public void Rate(int storyId, float value, string userId)
         {
-            var story = this.stories.GetById(userId);
+            var story = this.stories.GetById(storyId);
 
             if (story != null)
             {

@@ -44,7 +44,7 @@
         <p>Added On: @story.AddedOn</p>
         <strong>Author: </strong>
         <p>@story.Author</p>
-        <p>Rating: @story.RatingsCount</p>
+        <p>Rating: @string.Format("{0:F1}", story.RatingsCount)</p>
         <p>
             @story.Content.Substring(0, Math.Min(story.Content.Length, 100))
             @if (@story.Content.Length >= 100)

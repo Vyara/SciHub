@@ -13,7 +13,7 @@
         <p>Added On: @story.AddedOn</p>
         <strong>Author: </strong>
         <p>@story.Author</p>
-        <p>Rating: @story.RatingsCount</p>
+        <p>Rating: @string.Format("{0:F1}", story.RatingsCount)</p>
         @if (@story.CommentsCount == 1)
         {
             <p>@story.CommentsCount Comment</p>

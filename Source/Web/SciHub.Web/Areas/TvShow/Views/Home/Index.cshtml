@@ -26,7 +26,7 @@
         <strong>Cast: </strong>
         <p>@show.LeadActor</p>
         <p>@show.SupportActor</p>
-        <p>Rating: @show.RatingsCount</p>
+        <p>Rating: @string.Format("{0:F1}", show.RatingsCount)</p>
         @if (@show.CommentsCount == 1)
         {
             <p>@show.CommentsCount Comment</p>

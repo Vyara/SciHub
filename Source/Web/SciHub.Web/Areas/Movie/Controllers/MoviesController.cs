@@ -1,17 +1,15 @@
-﻿using SciHub.Services.Data.Contracts;
-
-namespace SciHub.Web.Areas.Movie.Controllers
+﻿namespace SciHub.Web.Areas.Movie.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
     using Common.Constants;
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
+    using Services.Data.Contracts;
     using ViewModels.Movies;
     using Web.Controllers;
+
 
     public class MoviesController : BaseController
     {
@@ -57,14 +55,9 @@ namespace SciHub.Web.Areas.Movie.Controllers
             return this.View(viewModel);
         }
 
-        [HttpGet]
-        public ActionResult Rate(int id)
-        {
-            return this.PartialView("_RateOptions", id);
-        }
-
+        [Authorize]
         [HttpPost]
-        public ActionResult Rate(int id, float value)
+        public ActionResult Details(int id, float value)
         {
             if (value > 5)
             {
@@ -75,9 +68,8 @@ namespace SciHub.Web.Areas.Movie.Controllers
             {
                 value = 1;
             }
-
-           this.movies.Rate(id, value, this.User.Identity.GetUserId());
-            return this.View();
+            this.movies.Rate(id, value, this.User.Identity.GetUserId());
+            return this.RedirectToAction("Details");
         }
 
         [HttpGet]

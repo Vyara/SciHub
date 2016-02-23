@@ -6,7 +6,7 @@
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
-    using SciHub.Web.Areas.ShortStory.ViewModels.ShortStories;
+    using ViewModels.ShortStories;
     using Web.Controllers;
 
     public class ShortStoriesController : BaseController
@@ -53,14 +53,9 @@
             return this.View(viewModel);
         }
 
-        [HttpGet]
-        public ActionResult Rate(int id)
-        {
-            return this.PartialView("_RateOptions", id);
-        }
-
+        [Authorize]
         [HttpPost]
-        public ActionResult Rate(int id, float value)
+        public ActionResult Details(int id, float value)
         {
             if (value > 5)
             {
@@ -71,9 +66,8 @@
             {
                 value = 1;
             }
-
-           this.stories.Rate(id, value, this.User.Identity.GetUserId());
-            return this.View();
+            this.stories.Rate(id, value, this.User.Identity.GetUserId());
+            return this.RedirectToAction("Details");
         }
 
         [HttpGet]
