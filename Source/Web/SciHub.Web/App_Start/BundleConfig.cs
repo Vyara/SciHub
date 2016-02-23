@@ -19,6 +19,7 @@
 
             bundles.Add(new ScriptBundle("~/bundles/jquery-ui").Include(
                 "~/Scripts/jquery-ui-{version}.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/sigalr").Include(
                 "~/Scripts/jquery.signalR-2.2.0.min.js"));
 
@@ -37,6 +38,38 @@
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/flatly").Include(
+                "~/Content/flatly.bootstrap.min.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/celurean").Include(
+                "~/Content/celurean.bootstrap.min.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/darkly").Include(
+                "~/Content/darkly.bootstrap.min.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/journal").Include(
+                "~/Content/journal.bootstrap.min.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/paper").Include(
+                "~/Content/paper.bootstrap.min.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/spacelab").Include(
+                "~/Content/spacelab.bootstrap.min.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/superhero").Include(
+                "~/Content/superhero.bootstrap.min.css",
+                "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/slate").Include(
+                "~/Content/slate.bootstrap.min.css",
                 "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/jquery-ui").Include("~/Content/themes/base/*.css"));
         }
