@@ -60,7 +60,9 @@
     <Compile Include="ActorsService.cs" />
     <Compile Include="BooksService.cs" />
     <Compile Include="Comment\MovieCommentsService.cs" />
+    <Compile Include="Comment\ShortStoryCommentService.cs" />
     <Compile Include="Contracts\Comment\IMovieCommentsService.cs" />
+    <Compile Include="Contracts\Comment\IShortStoryCommentsService.cs" />
     <Compile Include="Contracts\IActorsService.cs" />
     <Compile Include="Contracts\IBooksService.cs" />
     <Compile Include="Contracts\IMoviesService.cs" />

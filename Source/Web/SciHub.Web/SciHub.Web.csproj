@@ -245,6 +245,7 @@
     <Compile Include="Areas\Movie\ViewModels\Movies\MovieStudioViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Ratings\MovieRatingViewModel.cs" />
     <Compile Include="Areas\ShortStory\Controllers\ShortStoriesController.cs" />
+    <Compile Include="Areas\ShortStory\ViewModels\Comments\ShortStoryCommentInputModel.cs" />
     <Compile Include="Areas\ShortStory\ViewModels\Comments\ShortStoryCommentViewModel.cs" />
     <Compile Include="Areas\ShortStory\ViewModels\Ratings\ShortStoryRatingViewModel.cs" />
     <Compile Include="Areas\ShortStory\ViewModels\ShortStories\AllShortStoriesShortStoryViewModel.cs" />
@@ -420,10 +421,14 @@
     <Content Include="Areas\ShortStory\Views\ShortStories\Details.cshtml" />
     <Content Include="Areas\ShortStory\Views\ShortStories\Index.cshtml" />
     <Content Include="Areas\Movie\Views\Shared\_AddComment.cshtml" />
-    <Content Include="Areas\Movie\Views\Shared\DisplayTemplates\MovieCommentViewModel.cshtml" />
+    <Content Include="Areas\ShortStory\Views\Shared\DisplayTemplates\ShortStoryCommentViewModel.cshtml" />
     <Content Include="Areas\Movie\Views\Shared\_MovieComment.cshtml" />
     <Content Include="Areas\Movie\Views\Shared\_AllComments.cshtml" />
     <Content Include="Areas\User\Views\User\CreateStory.cshtml" />
+    <Content Include="Areas\ShortStory\Views\Shared\_AddComment.cshtml" />
+    <Content Include="Areas\ShortStory\Views\Shared\_AllComments.cshtml" />
+    <Content Include="Areas\ShortStory\Views\Shared\_ShortStoryComment.cshtml" />
+    <Content Include="Areas\Movie\Views\Shared\DisplayTemplates\MovieCommentViewModel.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

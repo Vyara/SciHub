@@ -8,14 +8,20 @@
     using Services.Data.Contracts;
     using ViewModels.ShortStories;
     using Web.Controllers;
+    using SciHub.Services.Data.Contracts.Comment;
+    using SciHub.Web.Areas.Movie.ViewModels.Comments;
+    using SciHub.Web.Areas.ShortStory.ViewModels.Comments;
+
 
     public class ShortStoriesController : BaseController
     {
         private readonly IShortStoriesService stories;
+        private readonly IShortStoryCommentsService comments;
 
-        public ShortStoriesController(IShortStoriesService stories)
+        public ShortStoriesController(IShortStoriesService stories, IShortStoryCommentsService comments)
         {
             this.stories = stories;
+            this.comments = comments;
         }
 
         [HttpGet]
@@ -98,6 +104,46 @@
             };
 
             return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult AddComment(int id)
+        {
+            var viewModel = new ShortStoryCommentInputModel()
+            {
+                Content = string.Empty,
+                ShortStoryId = id
+
+            };
+            return this.PartialView("_AddComment", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment(ShortStoryCommentInputModel comment)
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                this.Response.StatusCode = 401;
+                return this.Content("Access is denied");
+            }
+
+            if (comment == null || !this.ModelState.IsValid)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request");
+            }
+
+            var newComment = this.comments.Add(comment.Content, comment.ShortStoryId, this.User.Identity.GetUserId());
+            if (newComment == null)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request.");
+            }
+
+            var viewModel = this.Mapper.Map<ShortStoryCommentViewModel>(newComment);
+
+            return this.PartialView("_ShortStoryComment", viewModel);
         }
     }
 }
