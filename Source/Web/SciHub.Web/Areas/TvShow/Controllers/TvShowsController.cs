@@ -8,15 +8,20 @@
     using SciHub.Services.Data.Contracts;
     using SciHub.Web.Areas.TvShow.ViewModels.TvShows;
     using SciHub.Web.Controllers;
+    using SciHub.Services.Data;
+    using SciHub.Web.Areas.Movie.ViewModels.Comments;
+    using SciHub.Web.Areas.TvShow.ViewModels.Comments;
 
 
     public class TvShowsController : BaseController
     {
         private readonly ITvShowsService tvShows;
+        private readonly ITvShowCommentsService comments;
 
-        public TvShowsController(ITvShowsService tvShows)
+        public TvShowsController(ITvShowsService tvShows, ITvShowCommentsService comments)
         {
             this.tvShows = tvShows;
+            this.comments = comments;
         }
 
         [HttpGet]
@@ -118,6 +123,46 @@
             };
 
             return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult AddComment(int id)
+        {
+            var viewModel = new TvShowCommentInputModel()
+            {
+                Content = string.Empty,
+                TvShowId = id
+
+            };
+            return this.PartialView("_AddComment", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment(TvShowCommentInputModel comment)
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                this.Response.StatusCode = 401;
+                return this.Content("Access is denied");
+            }
+
+            if (comment == null || !this.ModelState.IsValid)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request");
+            }
+
+            var newComment = this.comments.Add(comment.Content, comment.TvShowId, this.User.Identity.GetUserId());
+            if (newComment == null)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request.");
+            }
+
+            var viewModel = this.Mapper.Map<TvShowCommentViewModel>(newComment);
+
+            return this.PartialView("_TvShowComment", viewModel);
         }
     }
 }

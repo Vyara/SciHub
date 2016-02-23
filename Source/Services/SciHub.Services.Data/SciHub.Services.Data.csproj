@@ -61,6 +61,7 @@
     <Compile Include="BooksService.cs" />
     <Compile Include="Comment\MovieCommentsService.cs" />
     <Compile Include="Comment\ShortStoryCommentService.cs" />
+    <Compile Include="Comment\TvShowCommentsService.cs" />
     <Compile Include="Contracts\Comment\IMovieCommentsService.cs" />
     <Compile Include="Contracts\Comment\IShortStoryCommentsService.cs" />
     <Compile Include="Contracts\IActorsService.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="DataTransferObjects\PagedShortStoryDto.cs" />
     <Compile Include="DataTransferObjects\PagedTvShowsDto.cs" />
+    <Compile Include="ITvShowCommentsService.cs" />
     <Compile Include="MoviesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShortStoriesService.cs" />

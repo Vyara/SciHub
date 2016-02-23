@@ -256,6 +256,7 @@
     <Compile Include="Areas\ShortStory\ViewModels\ShortStories\TopShortStoryIndexViewModel.cs" />
     <Compile Include="Areas\ShortStory\ViewModels\ShortStories\TopShortStoryListViewModel.cs" />
     <Compile Include="Areas\TvShow\Controllers\TvShowsController.cs" />
+    <Compile Include="Areas\TvShow\ViewModels\Comments\TvShowCommentInputModel.cs" />
     <Compile Include="Areas\TvShow\ViewModels\Comments\TvShowCommentViewModel.cs" />
     <Compile Include="Areas\TvShow\ViewModels\Ratings\TvShowRatingViewModel.cs" />
     <Compile Include="Areas\TvShow\ViewModels\TvShows\AllTvShowsTvShowViewModel.cs" />
@@ -429,6 +430,10 @@
     <Content Include="Areas\ShortStory\Views\Shared\_AllComments.cshtml" />
     <Content Include="Areas\ShortStory\Views\Shared\_ShortStoryComment.cshtml" />
     <Content Include="Areas\Movie\Views\Shared\DisplayTemplates\MovieCommentViewModel.cshtml" />
+    <Content Include="Areas\TvShow\Views\Shared\DisplayTemplates\TvShowCommentViewModel.cshtml" />
+    <Content Include="Areas\TvShow\Views\Shared\_AddComment.cshtml" />
+    <Content Include="Areas\TvShow\Views\Shared\_AllComments.cshtml" />
+    <Content Include="Areas\TvShow\Views\Shared\_TvShowComment.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
