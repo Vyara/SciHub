@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace SciHub.Web.Areas.Movie
+﻿namespace SciHub.Web.Areas.Movie
 {
+    using System.Web.Mvc;
+
     public class MovieAreaRegistration : AreaRegistration
     {
         public override string AreaName
