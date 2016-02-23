@@ -235,6 +235,7 @@
     <Compile Include="Areas\Book\ViewModels\Books\BookAuthorViewModel.cs" />
     <Compile Include="Areas\Book\ViewModels\Books\TopBookIndexViewModel.cs" />
     <Compile Include="Areas\Book\ViewModels\Books\TopBookListViewModel.cs" />
+    <Compile Include="Areas\Book\ViewModels\Comments\BookCommentInputModel.cs" />
     <Compile Include="Areas\Book\ViewModels\Ratings\BookRatingViewModel.cs" />
     <Compile Include="Areas\Movie\Controllers\HomeController.cs" />
     <Compile Include="Areas\Movie\Controllers\MoviesController.cs" />
@@ -434,6 +435,10 @@
     <Content Include="Areas\TvShow\Views\Shared\_AddComment.cshtml" />
     <Content Include="Areas\TvShow\Views\Shared\_AllComments.cshtml" />
     <Content Include="Areas\TvShow\Views\Shared\_TvShowComment.cshtml" />
+    <Content Include="Areas\Book\Views\Shared\DisplayTemplates\BookCommentViewModel.cshtml" />
+    <Content Include="Areas\Book\Views\Shared\_AddComment.cshtml" />
+    <Content Include="Areas\Book\Views\Shared\_AllComments.cshtml" />
+    <Content Include="Areas\Book\Views\Shared\_BookComment.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

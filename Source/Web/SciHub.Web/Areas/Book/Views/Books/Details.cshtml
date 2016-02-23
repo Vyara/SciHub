@@ -25,7 +25,7 @@
             <div id="modal-opener" class="btn btn-default">Rate</div>
 
             <div id="dialog-modal" title="Rate @Model.Title">
-                @using (Ajax.BeginForm("Details", "Books", FormMethod.Post, new AjaxOptions { UpdateTargetId = "current-rating", OnSuccess = "onSuccess" }))
+                @using (Html.BeginForm("Details", "Books", FormMethod.Post, new AjaxOptions { UpdateTargetId = "current-rating", OnSuccess = "onSuccess" }))
                 {
                     <div>
                         <fieldset>
@@ -61,30 +61,35 @@
 </div>
 @if (Request.IsAuthenticated)
 {
-    <div>
-        @Ajax.ActionLink("Add a Comment", "Details", "Books", new { id = Model.Id },
+    <div id="holder">
+        @Ajax.ActionLink("Add a Comment", "AddComment", "Books", new { id = Model.Id },
             new AjaxOptions
             {
                 UpdateTargetId = "holder",
                 HttpMethod = "GET",
                 InsertionMode = InsertionMode.Replace
-            }, new { @class = "btn btn-info" })
+            }, new { @class = "btn btn-default" })
     </div>
-}
-@foreach (var comment in Model.Comments)
-{
-    <div class="row well-sm">
-        <div class="well-sm">
-            @comment.Content
+    }
+<div id="comments">
+    @foreach (var comment in Model.Comments)
+    {
+        <div class="row">
+            <div>
+                <p>@comment.Content</p>
+                <p>
+                    <small class="pull-right">Posted on:@comment.CreatedOn By: @comment.Author</small>
+                </p>
+            </div>
         </div>
-        <p>Posted on: @comment.CreatedOn, By: @comment.Author </p>
-    </div>
-}
+    }
 
+</div>
 
 
 @section scripts {
-  <script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script>
         $(function () {
             $("#dialog-modal").dialog({
                 autoOpen: false,
@@ -108,5 +113,14 @@
         function onSuccess() {
             $("#dialog-modal").dialog("close");
         }
+
+        function onCommentSuccess() {
+            $("#commentBox").val('');
+        }
+
+        function onCommentFail() {
+            $("#commentBox").html("Comment adding failed");
+        }
 </script>
+}
 }

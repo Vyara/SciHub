@@ -59,9 +59,11 @@
   <ItemGroup>
     <Compile Include="ActorsService.cs" />
     <Compile Include="BooksService.cs" />
+    <Compile Include="Comment\BookCommentsService.cs" />
     <Compile Include="Comment\MovieCommentsService.cs" />
     <Compile Include="Comment\ShortStoryCommentService.cs" />
     <Compile Include="Comment\TvShowCommentsService.cs" />
+    <Compile Include="Contracts\Comment\IBookCommentsService.cs" />
     <Compile Include="Contracts\Comment\IMovieCommentsService.cs" />
     <Compile Include="Contracts\Comment\IShortStoryCommentsService.cs" />
     <Compile Include="Contracts\IActorsService.cs" />
@@ -69,7 +71,7 @@
     <Compile Include="Contracts\IMoviesService.cs" />
     <Compile Include="Contracts\IShortStoriesService.cs" />
     <Compile Include="Contracts\ITagsService.cs" />
-    <Compile Include="Contracts\ITvShowsService.cs" />
+    <Compile Include="Contracts\Comment\ITvShowsService.cs" />
     <Compile Include="DataTransferObjects\PagedBooksDto.cs" />
     <Compile Include="DataTransferObjects\PagedMoviesDto.cs" />
     <Compile Include="Contracts\IUsersService.cs" />

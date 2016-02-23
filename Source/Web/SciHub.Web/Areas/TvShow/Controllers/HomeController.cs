@@ -1,4 +1,5 @@
 ﻿using SciHub.Services.Data.Contracts;
+using SciHub.Services.Data.Contracts.Comment;
 
 namespace SciHub.Web.Areas.TvShow.Controllers
 {

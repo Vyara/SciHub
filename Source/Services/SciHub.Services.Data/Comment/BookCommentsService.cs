@@ -2,21 +2,24 @@
 {
     using System.Linq;
     using SciHub.Services.Data.Contracts;
-    using SciHub.Data.Models.TvShow;
+    using SciHub.Services.Data.Contracts.Comment;
+    using SciHub.Data.Models.Book;
     using SciHub.Data.Common.Repositories;
 
-    public class TvShowCommentsService : ITvShowCommentsService
+
+    public class BookCommentsService : IBookCommentsService
     {
-        private readonly IDbRepository<TvShowComment> tvShowComments;
+        private readonly IDbRepository<BookComment> bookComments;
         private readonly IUsersService users;
 
-        public TvShowCommentsService(IDbRepository<TvShowComment> tvShowComments, IUsersService users)
+        public BookCommentsService(IDbRepository<BookComment> bookComments, IUsersService users)
         {
-            this.tvShowComments = tvShowComments;
+            this.bookComments = bookComments;
             this.users = users;
         }
 
-        public TvShowComment Add(string content, int showId, string userId)
+
+        public BookComment Add(string content, int bookId, string userId)
         {
             if (string.IsNullOrWhiteSpace(content) || string.IsNullOrWhiteSpace(userId))
             {
@@ -29,16 +32,16 @@
                 return null;
             }
 
-            var comment = new TvShowComment()
+            var comment = new BookComment()
             {
                 Content = content,
-                TvShowId = showId,
+                BookId = bookId,
                 AuthorId = user.Id
             };
 
-            this.tvShowComments.Add(comment);
-            this.tvShowComments.SaveChanges();
-            return this.tvShowComments.GetById(comment.Id);
+            this.bookComments.Add(comment);
+            this.bookComments.SaveChanges();
+            return this.bookComments.GetById(comment.Id);
         }
 
         public void Delete(int id)
@@ -48,35 +51,35 @@
             {
                 return;
             }
-            this.tvShowComments.HardDelete(commentToDelete);
-            this.tvShowComments.SaveChanges();
+            this.bookComments.HardDelete(commentToDelete);
+            this.bookComments.SaveChanges();
         }
 
-        public IQueryable<TvShowComment> GetAll()
+        public IQueryable<BookComment> GetAll()
         {
-            return this.tvShowComments.All();
+            return this.bookComments.All();
         }
 
-        public IQueryable<TvShowComment> GetAllByTvShowId(int showId, int? size)
+        public IQueryable<BookComment> GetAllByBookId(int bookId, int? size)
         {
             if (size == null || size < 1)
             {
-                return this.tvShowComments
+                return this.bookComments
                 .All()
-                .Where(x => x.TvShowId == showId)
+                .Where(x => x.BookId == bookId)
                 .OrderByDescending(x => x.CreatedOn);
             }
 
-            return this.tvShowComments
+            return this.bookComments
                 .All()
-                .Where(x => x.TvShowId == showId)
+                .Where(x => x.BookId == bookId)
                 .OrderByDescending(x => x.CreatedOn)
                 .Take((int)size);
         }
 
-        public TvShowComment GetById(int id)
+        public BookComment GetById(int id)
         {
-            return this.tvShowComments.GetById(id);
+            return this.bookComments.GetById(id);
         }
 
         public void Update(string content, int id)
@@ -89,10 +92,7 @@
 
             commentToUpdate.Content = content;
 
-            this.tvShowComments.SaveChanges();
+            this.bookComments.SaveChanges();
         }
     }
 }
-
-
-

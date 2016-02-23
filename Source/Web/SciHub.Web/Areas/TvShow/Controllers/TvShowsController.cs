@@ -1,4 +1,6 @@
-﻿namespace SciHub.Web.Areas.TvShow.Controllers
+﻿using SciHub.Services.Data.Contracts.Comment;
+
+namespace SciHub.Web.Areas.TvShow.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;

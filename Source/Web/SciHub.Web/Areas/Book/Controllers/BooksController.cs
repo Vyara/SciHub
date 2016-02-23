@@ -6,16 +6,20 @@
     using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Services.Data.Contracts;
+    using SciHub.Services.Data.Contracts.Comment;
     using ViewModels.Books;
+    using SciHub.Web.Areas.Book.ViewModels.Comments;
     using Web.Controllers;
 
     public class BooksController : BaseController
     {
         private readonly IBooksService books;
+        private readonly IBookCommentsService comments;
 
-        public BooksController(IBooksService books)
+        public BooksController(IBooksService books, IBookCommentsService comments)
         {
             this.books = books;
+            this.comments = comments;
         }
 
         [HttpGet]
@@ -74,7 +78,7 @@
         public ActionResult BooksByAuthor(int id)
         {
             // Todo: Cache
-  
+
             var topBooks = this.books.GetAuthorBooks(id).ToList();
 
             var viewModel = new BooksByAuthorListViewModel
@@ -98,6 +102,46 @@
             };
 
             return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult AddComment(int id)
+        {
+            var viewModel = new BookCommentInputModel()
+            {
+                Content = string.Empty,
+                BookId = id
+
+            };
+            return this.PartialView("_AddComment", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment(BookCommentInputModel comment)
+        {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                this.Response.StatusCode = 401;
+                return this.Content("Access is denied");
+            }
+
+            if (comment == null || !this.ModelState.IsValid)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request");
+            }
+
+            var newComment = this.comments.Add(comment.Content, comment.BookId, this.User.Identity.GetUserId());
+            if (newComment == null)
+            {
+                this.Response.StatusCode = 400;
+                return this.Content("Bad request.");
+            }
+
+            var viewModel = this.Mapper.Map<BookCommentViewModel>(newComment);
+
+            return this.PartialView("_BookComment", viewModel);
         }
     }
 }
