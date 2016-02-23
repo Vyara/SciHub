@@ -54,6 +54,7 @@
             var viewModel = this.Mapper.Map(movie, new MovieDetailsViewModel());
             if (movie == null)
             {
+                this.Response.StatusCode = 404;
                 return this.Content("Movie with this id was not found");
             }
             return this.View(viewModel);

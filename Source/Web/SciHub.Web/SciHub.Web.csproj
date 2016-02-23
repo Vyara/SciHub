@@ -257,6 +257,7 @@
     <Compile Include="Areas\TvShow\ViewModels\TvShows\TopTvShowIndexViewModel.cs" />
     <Compile Include="Areas\TvShow\ViewModels\TvShows\TopTvShowListViewModel.cs" />
     <Compile Include="Areas\User\Controllers\UserController.cs" />
+    <Compile Include="Areas\User\ViewModels\ShortStoryInputViewModel.cs" />
     <Compile Include="Areas\User\ViewModels\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\Actors\ActorNameViewModel.cs" />
     <Compile Include="Areas\Movie\ViewModels\Movies\AllMoviesMovieViewModel.cs" />
@@ -412,6 +413,7 @@
     <Content Include="Areas\Movie\Views\Shared\DisplayTemplates\MovieCommentViewModel.cshtml" />
     <Content Include="Areas\Movie\Views\Shared\_MovieComment.cshtml" />
     <Content Include="Areas\Movie\Views\Shared\_AllComments.cshtml" />
+    <Content Include="Areas\User\Views\User\CreateStory.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

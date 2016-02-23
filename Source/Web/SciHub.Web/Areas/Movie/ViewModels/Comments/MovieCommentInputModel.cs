@@ -6,6 +6,7 @@
     public class MovieCommentInputModel
     {
         [Required]
+        [MinLength(MovieModelConstants.CommentMinLength)]
         [MaxLength(MovieModelConstants.CommentMaxLength)]
         public string Content { get; set; }
 
