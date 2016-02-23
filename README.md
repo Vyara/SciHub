@@ -1,7 +1,5 @@
 # SciHub
 
-## Build Status
-
 # Project Description
 
 SciHub is an online source of material for every science fiction fan. Users can rate and comment on science fiction movies, books and tv shows, and can also read short stories posted by other users as well as rate and 
@@ -19,4 +17,4 @@ Administration Part
 
 System administrators have access to all data and can create, read, update and delete movies, short stories, tv shows, books and other users.
 
-#### The project is also hosted in Azure: (http://scihub.azurewebsites.net/)
+#### The project is also hosted in Azure: http://scihub.azurewebsites.net/
