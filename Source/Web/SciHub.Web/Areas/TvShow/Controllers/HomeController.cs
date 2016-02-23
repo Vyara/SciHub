@@ -21,19 +21,13 @@
 
         public ActionResult Index()
         {
-
             var topTvshows = this.shows.GetTop(WebConstants.NumberOfTopTvShowsForTvShowsHomePage).To<TopTvShowIndexViewModel>().ToList();
             var viewModel = new TopTvShowListViewModel
             {
                 TvShows = topTvshows
             };
 
-            var cachedViewModel = this.Cache.Get("TopTvShows", () => new TopTvShowListViewModel
-            {
-                TvShows = topTvshows
-            }, WebConstants.BooksCacheTime);
-
-            return this.View(cachedViewModel);
+            return this.View(viewModel);
         }
     }
 }

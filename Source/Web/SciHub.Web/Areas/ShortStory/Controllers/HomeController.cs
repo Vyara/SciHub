@@ -20,13 +20,12 @@
         public ActionResult Index()
         {
             var topStories = this.stories.GetTop(WebConstants.NumberOfTopShortStoriesForShortStoriesHomePage).To<TopShortStoryIndexViewModel>().ToList();
-
-            var cachedViewModel = this.Cache.Get("TopShortStories", () => new TopShortStoryListViewModel
+            var viewModel = new TopShortStoryListViewModel
             {
                 ShortStories = topStories
-            }, WebConstants.BooksCacheTime);
+            };
 
-            return this.View(cachedViewModel);
+            return this.View(viewModel);
         }
     }
 }

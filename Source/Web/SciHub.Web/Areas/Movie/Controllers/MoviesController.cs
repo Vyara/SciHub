@@ -27,7 +27,6 @@
         [HttpGet]
         public ActionResult Index(int id = 1, string order = "newest", string criteria = "")
         {
-
             if (order != "newest" && order != "top")
             {
                 this.Response.StatusCode = 412;
@@ -36,16 +35,15 @@
 
             var page = id;
             var pagedMovies = this.movies.GetAllWithPaging(page, WebConstants.AllMoviesPageSize, order, criteria);
-
-            var cachedViewModel = this.Cache.Get("moviesPaged", () => new MoviesPageableListViewModel()
+            var viewModel = new MoviesPageableListViewModel()
             {
                 CurrentPage = page,
                 AllItemsCount = pagedMovies.AllItemsCount,
                 TotalPages = pagedMovies.TotalPages,
                 Movies = pagedMovies.Movies.To<AllMoviesMovieViewModel>().AsEnumerable()
-            }, WebConstants.MoviesCacheTime);
+            };
 
-            return this.View(cachedViewModel);
+            return this.View(viewModel);
         }
 
         [HttpGet]

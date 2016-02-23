@@ -24,13 +24,12 @@
         public ActionResult Index()
         {
             var topMovies = this.movies.GetTop(WebConstants.NumberOfTopMoviesForMoviesHomePage).To<TopMovieIndexViewModel>().ToList();
-
-            var cachedViewModel = this.Cache.Get("TopMovies", () => new TopMovieListViewModel
+            var viewModel = new TopMovieListViewModel
             {
                 Movies = topMovies
-            }, WebConstants.MoviesCacheTime);
+            };
 
-            return this.View(cachedViewModel);
+            return this.View(viewModel);
         }
     }
 }

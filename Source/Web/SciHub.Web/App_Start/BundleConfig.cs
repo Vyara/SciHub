@@ -72,6 +72,8 @@
                 "~/Content/slate.bootstrap.min.css",
                 "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/jquery-ui").Include("~/Content/themes/base/*.css"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

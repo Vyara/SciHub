@@ -30,22 +30,22 @@
         {
             if (order != "newest" && order != "top")
             {
+
                 this.Response.StatusCode = 412;
                 return this.Content("Order not right");
             }
 
             var page = id;
             var pagedtvShows = this.tvShows.GetAllWithPaging(page, WebConstants.AllTvShowsPageSize, order, criteria);
-
-            var cachedViewModel = this.Cache.Get("tvShowsPaged", () => new TvShowsPageableListViewModel()
+            var viewModel = new TvShowsPageableListViewModel()
             {
                 CurrentPage = page,
                 AllItemsCount = pagedtvShows.AllItemsCount,
                 TotalPages = pagedtvShows.TotalPages,
                 TvShows = pagedtvShows.TvShows.To<AllTvShowsTvShowViewModel>().AsEnumerable()
-            }, WebConstants.TvShowsCacheTime);
+            };
 
-            return this.View(cachedViewModel);
+            return this.View(viewModel);
         }
 
         [HttpGet]
