@@ -42,7 +42,7 @@
                 CurrentPage = page,
                 AllItemsCount = pagedtvShows.AllItemsCount,
                 TotalPages = pagedtvShows.TotalPages,
-                TvShows = pagedtvShows.TvShows.To<AllTvShowsTvShowViewModel>().AsEnumerable()
+                TvShows = pagedtvShows.TvShows.To<AllTvShowsTvShowViewModel>().ToList()
             };
 
             return this.View(viewModel);

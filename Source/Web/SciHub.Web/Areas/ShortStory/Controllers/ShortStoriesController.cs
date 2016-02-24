@@ -42,7 +42,7 @@
                 CurrentPage = page,
                 AllItemsCount = pagedStories.AllItemsCount,
                 TotalPages = pagedStories.TotalPages,
-                ShortStories = pagedStories.ShortStories.To<AllShortStoriesShortStoryViewModel>().AsEnumerable()
+                ShortStories = pagedStories.ShortStories.To<AllShortStoriesShortStoryViewModel>().ToList()
             }, WebConstants.ShortStoriesCacheTime);
 
             return this.View(cachedViewModel);

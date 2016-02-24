@@ -8,8 +8,6 @@
     using SciHub.Services.Data.Contracts.Comment;
     using SciHub.Web.Areas.TvShow.ViewModels.TvShows;
 
-
-
     public class HomeController : BaseController
     {
         private readonly ITvShowsService shows;
@@ -22,12 +20,12 @@
         public ActionResult Index()
         {
             var topTvshows = this.shows.GetTop(WebConstants.NumberOfTopTvShowsForTvShowsHomePage).To<TopTvShowIndexViewModel>().ToList();
-            var viewModel = new TopTvShowListViewModel
+            var cachedViewModel = this.Cache.Get("TopTvShows", () => new TopTvShowListViewModel
             {
                 TvShows = topTvshows
-            };
+            }, WebConstants.BooksCacheTime);
 
-            return this.View(viewModel);
+            return this.View(cachedViewModel);
         }
     }
 }

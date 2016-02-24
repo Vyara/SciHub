@@ -41,7 +41,7 @@
                 CurrentPage = page,
                 AllItemsCount = pagedBooks.AllItemsCount,
                 TotalPages = pagedBooks.TotalPages,
-                Books = pagedBooks.Books.To<AllBooksBookViewModel>().AsEnumerable()
+                Books = pagedBooks.Books.To<AllBooksBookViewModel>().ToList()
             }, WebConstants.BooksCacheTime);
 
             return this.View(cachedViewModel);

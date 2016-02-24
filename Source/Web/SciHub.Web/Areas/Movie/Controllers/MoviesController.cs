@@ -40,7 +40,7 @@
                 CurrentPage = page,
                 AllItemsCount = pagedMovies.AllItemsCount,
                 TotalPages = pagedMovies.TotalPages,
-                Movies = pagedMovies.Movies.To<AllMoviesMovieViewModel>().AsEnumerable()
+                Movies = pagedMovies.Movies.To<AllMoviesMovieViewModel>().ToList()
             };
 
             return this.View(viewModel);

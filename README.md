@@ -1,5 +1,8 @@
 # SciHub
 
+##Build Status
+[![Build status](https://ci.appveyor.com/api/projects/status/vx0lf1r8bnyrq9rx?svg=true)](https://ci.appveyor.com/project/Vyara/scihub)
+
 # Project Description
 
 SciHub is an online source of material for every science fiction fan. Users can rate and comment on science fiction movies, books and tv shows, and can also read short stories posted by other users as well as rate and 
