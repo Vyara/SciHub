@@ -8,6 +8,8 @@
 SciHub is an online source of material for every science fiction fan. Users can rate and comment on science fiction movies, books and tv shows, and can also read short stories posted by other users as well as rate and 
 comment on those as well.
 
+![home page](images/main.png)
+
 # Public Part
 
 Visitors can see details about movies, books and tv shows and can read the short stories.
