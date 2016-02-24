@@ -41,6 +41,6 @@ System administrators have access to all data and can create, read, update and d
 ![admin table](images/admin-table.png)
 
 
-##Please note that the used Kendo UI for ASP.NET MVC code in this project is on trial license and could be used only if purchased or downloaded as trial from (http://www.telerik.com/kendo-ui "Kendo UI for ASP.NET MVC")
+Please note that the used Kendo UI for ASP.NET MVC code in this project is on trial license and could be used only if purchased or downloaded as trial from [Kendo UI for ASP.NET MVC](http://www.telerik.com/kendo-ui)
 
 #### The project is also hosted in Azure: http://scihub.azurewebsites.net/
