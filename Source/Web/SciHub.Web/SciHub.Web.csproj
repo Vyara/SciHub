@@ -520,6 +520,14 @@
     <None Include="Properties\PublishProfiles\SciHub - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\SciHub - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="images\index\book.jpg" />
+    <Content Include="images\index\main.jpg" />
+    <Content Include="images\index\movie.jpg" />
+    <Content Include="images\index\story.jpg" />
+    <Content Include="images\index\tv-show.jpg" />
+    <Content Include="images\profile\female.jpg" />
+    <Content Include="images\profile\male.jpg" />
+    <Content Include="images\profile\neutral.jpg" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
